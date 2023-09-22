@@ -1,18 +1,19 @@
 {
-  "name": "2023-09",
+  "name": "b11",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Analyze and view b11 posts on 11:11",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "analyze": "ts-node index.ts"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Simon Karman",
   "license": "ISC",
   "dependencies": {
     "@types/luxon": "^3.3.2",
     "@types/node": "^20.6.3",
     "csv-parse": "^5.5.0",
     "luxon": "^3.4.3"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
   }
 }
