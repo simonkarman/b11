@@ -27,42 +27,28 @@ const parsers: { [extension: string]: Parser | undefined } = {
       { columns: true, delimiter: ';', skip_empty_lines: true }
     ).map((record: { [key: string]: string | undefined }): Message => ({
       author: authorIds.get(record.sender_jid_row_id || '') || 'unknown',
-      timestamp: DateTime.fromMillis(Number.parseInt(record.received_timestamp || '0', 10)).toISO() || 'none',
+      timestamp: DateTime.fromMillis(Number.parseInt(record.timestamp || '0', 10)).toISO() || 'none',
       text: record.text_data || '',
     }));
   },
   txt: (filename) => {
-    // const lines = fs.readFileSync(BASE_DATA_PATH + filename).toString().split('\n');
-    // const txtRegex = /(^1?\d\/[1-3]?\d\/[0-3]?\d), (\d{2}:\d{2}) - (.*): (.*)$/g;
-    // const authorNames = new Map<string, Author>([
-    //   ['Pablo Schipper',  'raoul'],
-    //   ['Thomas Hes', 'thomas'],
-    //   ['Yorick van Zweeden', 'yorick'],
-    //   ['Robin Sikkens', 'robin'],
-    //   ['Simon Karman', 'simon'],
-    //   ['Rogier Simons', 'rogier'],
-    // ]);
-    // let lastMessage: Message = {  timestamp: 'none', author: 'unknown', text: '' };
-    // return lines.map((line: string) => {
-    //   const result = txtRegex.exec(line)
-    //   if (result === null) {
-    //     lastMessage.text += line;
-    //     return undefined;
-    //   } else {
-    //     const message: Message = {
-    //       author: result[3],
-    //       timestamp: result[1] + 'T' + result[2],
-    //       text: result[4],
-    //     }
-    //     lastMessage = message;
-    //     return message;
-    //   }
-    // }).filter(message => message !== undefined) as Message[];
-    return [];
+    const regex = /^(\d\d-\d\d-\d\d\d\d \d\d:\d\d) - ([^:]+): ?((?:(?!^\d\d-\d\d-\d\d\d\d \d\d:\d\d - (.+):)(?:.|\n))*)$/gm;
+    const matches = fs.readFileSync(BASE_DATA_PATH + filename).toString().matchAll(regex);
+    const messages: Message[] = [];
+    for (const match of matches) {
+      messages.push({
+        author: match[2].split(' ')[0].toLowerCase().replace('pablo', 'raoul') as Author,
+        timestamp: DateTime.fromFormat(match[1], 'dd-MM-yyyy HH:mm').toISO() || 'none',
+        text: match[3],
+      })
+    }
+    return messages;
   }
 };
 
 const program = (filenames: string[]): void => {
+  // Parsing data
+  console.info('Parsing data:');
   const allMessages: Message[] = [];
   filenames.forEach(filename => {
     const extension = filename.substring(filename.lastIndexOf('.') + 1);
@@ -73,13 +59,44 @@ const program = (filenames: string[]): void => {
     }
     const messages = parser(filename);
     if (messages.length > 0) {
-      console.info(filename, messages.length, 'messages (', messages[0].timestamp, '-', messages[messages.length - 1].timestamp, ')');
+      console.info(' -', filename, 'found:', messages.length, 'messages (from', messages[0].timestamp, 'until', messages[messages.length - 1].timestamp, ')');
     } else {
-      console.info(filename, 'no messages found');
+      console.info(' -', filename, 'found:', 0, 'messages');
     }
     allMessages.push(...messages);
   });
-  console.info(allMessages.length, allMessages[allMessages.length - 3]);
+
+  // Running analytics
+  console.info('\nRunning analytics:');
+  const analytics: { [date: string]: Map<Author, boolean> } = {};
+  allMessages.forEach(message => {
+    const timestamp = DateTime.fromISO(message.timestamp);
+    if (
+      timestamp.hour === 11
+      && (timestamp.minute >= 10 && timestamp.minute <= 12)
+      && (message.text.trim() === '11:11' || message.text.trim() === '11:11:11')
+    ) {
+      const date = timestamp.toISODate() || 'none';
+      if (analytics[date] === undefined) {
+        analytics[date] = new Map();
+      }
+      analytics[date].set(message.author, timestamp.minute === 11);
+    }
+  });
+  const dates: { date: string, authors: Map<Author, boolean> }[] = [];
+  for (const date in analytics) {
+    dates.push({ date, authors: analytics[date] });
+  }
+  console.info('- Found', dates.length, 'dates on which 11:11 was posted by at least 1 person.');
+  dates.sort((a, b) => a.date.localeCompare(b.date));
+  fs.mkdirSync('output', { recursive: true });
+  const now = DateTime.now().startOf('minute');
+  const outputFilename = `output/${now.toISODate()}-${now.toISOTime({ suppressSeconds: true, includeOffset: false })!.replace(':', '-')}.txt`;
+  fs.writeFileSync(
+    outputFilename,
+    dates.map(date => `${date.date} ${Array.from(date.authors.entries()).map(([author, exact]) => `${exact ? '' : '~'}${author}`).join(', ')}`).join('\n'),
+  );
+  console.info(`- Analytics data was written to ${outputFilename}`);
 }
 
 program(fs.readdirSync(BASE_DATA_PATH));
