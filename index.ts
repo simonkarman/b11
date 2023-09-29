@@ -100,6 +100,11 @@ const program = (filenames: string[]): void => {
   );
   console.info(`- Relevant information has been written to ${outputFilename}.txt`);
 
+  // Other ideas from Lisa:
+  // - Add most common collaborations for all different permutations of people (for example: how often did simon+pablo+robin post together?)
+  // - Which day of the week is most popular?
+  // - Which day/month is most popular?
+
   // Run analytics
   console.info('\nRun analytics:');
   // A report is generated for each author. Additionally, a report is generated for the whole group of authors.
