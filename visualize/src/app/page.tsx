@@ -1,4 +1,6 @@
-import Image from 'next/image'
+"use client";
+
+import { BarChart } from '@/component/bar-chart';
 
 export default function Home() {
   return (
@@ -8,6 +10,7 @@ export default function Home() {
         <p>Analyze and view b11 posts on 11:11.</p>
         <p>Source: <a className='text-blue-600' href='https://github.com/simonkarman/b11'>GitHub</a></p>
       </div>
+      <BarChart />
     </main>
   )
 }
