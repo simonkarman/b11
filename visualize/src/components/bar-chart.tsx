@@ -19,27 +19,27 @@ export const BarChart = () => {
     },
     {
       name: 'D',
-      value: 70,
+      value: 100,
     },
   ]);
   const svgRef = useRef<SVGSVGElement>();
 
   useEffect(() => {
-    const margin = {top: 20, right: 20, bottom: 30, left: 40};
-    const width = 960 - margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
+    // const margin = {top: 20, right: 20, bottom: 30, left: 40};
+    // const width = 960 - margin.left - margin.right;
+    // const height = 500 - margin.top - margin.bottom;
 
-    const x = d3.scaleBand().range([0, width]).padding(0.1);
-    const y = d3.scaleLinear().range([height, 0]);
+    const x = d3.scaleBand().range([0, 100]).padding(0.1);
+    const y = d3.scaleLinear().range([100, 0]);
 
     const svg = d3
       // @ts-ignore
       .select(svgRef.current)
       .append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
-      .append('g')
-      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+      // .attr('width', width + margin.left + margin.right)
+      // .attr('height', height + margin.top + margin.bottom)
+      .append('g');
+      // .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
     x.domain(
       data.map(function (d) {
@@ -62,19 +62,19 @@ export const BarChart = () => {
       .attr('class', 'bar')
       // @ts-ignore
       .attr('x', function (d) {
-        return x(d.name);
+        return x(d.name) + 10;
       })
       .attr('width', x.bandwidth())
       .attr('y', function (d) {
         return y(d.value);
       })
       .attr('height', function (d) {
-        return height - y(d.value);
+        return 100 - y(d.value);
       });
 
     svg
       .append('g')
-      .attr('transform', 'translate(0,' + height + ')')
+      .attr('transform', 'translate(10,' + 100 + ')')
       .call(d3.axisBottom(x));
 
     svg.append('g').call(d3.axisLeft(y));
@@ -82,9 +82,9 @@ export const BarChart = () => {
 
   // @ts-ignore
   return (
-    <div className='py-2 px-4 border'>
-      <svg ref={svgRef}></svg>
-      <p>An Example Chart</p>
+    <div className='w-full sm:w-1/2 xl:w-1/3 p-1 pt-4 space-y-1'>
+      <svg className='w-full border' ref={svgRef} />
+      <p className='px-1 text-sm text-gray-700'>An Example Chart</p>
     </div>
   );
 }

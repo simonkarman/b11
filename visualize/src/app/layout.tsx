@@ -9,13 +9,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html>
-      <body className='flex flex-col min-h-screen'>
-        <header className='bg-gray-100 w-full p-4 border-b-2 border-gray-300'>
-          <div className='container mx-auto'>
+      <body className='bg-gray-100 flex flex-col min-h-screen'>
+        <header className='w-full border-b-2 border-gray-300'>
+          <div className='container mx-auto p-2'>
             <h1 className='text-xl font-bold mb-2'>B11</h1>
             <p>Analyze and view <a
-              className='underline text-blue-600'
+              target='_blank'
               href='https://svsticky.nl/besturen/11'
+              className='underline text-blue-600'
             >B11</a> posts on 11:11.</p>
           </div>
         </header>
@@ -24,11 +25,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </main>
         </div>
-      <footer className='bg-gray-100 w-full p-4 border-t-2 border-gray-300'>
-        <div className='container mx-auto'>
+      <footer className='w-full border-t-2 border-gray-300'>
+        <div className='container mx-auto p-2'>
           <p>
             Source: <a
-              target='_ref'
+              target='_blank'
               href='https://github.com/simonkarman/b11'
               className='text-blue-600'
             >

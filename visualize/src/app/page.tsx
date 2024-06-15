@@ -1,20 +1,10 @@
 "use client";
 
-import { BarChart } from '@/component/bar-chart';
+import { BarChart } from '@/components/bar-chart';
 
 export default function Home() {
   return (
-    <div className='gap-2 justify-between flex flex-wrap p-2'>
-      <BarChart />
-      <BarChart />
-      <BarChart />
-      <BarChart />
-      <BarChart />
-      <BarChart />
-      <BarChart />
-      <BarChart />
-      <BarChart />
-      <BarChart />
+    <div className='flex flex-wrap p-2'>
       <BarChart />
       <BarChart />
       <BarChart />
