@@ -81,5 +81,10 @@ export const BarChart = () => {
   }, [data]);
 
   // @ts-ignore
-  return (<svg ref={svgRef}></svg>);
+  return (
+    <div className='py-2 px-4 border'>
+      <svg ref={svgRef}></svg>
+      <p>An Example Chart</p>
+    </div>
+  );
 }

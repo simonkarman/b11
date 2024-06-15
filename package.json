@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Analyze and view b11 posts on 11:11",
   "scripts": {
-    "analyze": "ts-node index.ts"
+    "analyze": "ts-node index.ts",
+    "release": "cp output/latest.json visualize/public/latest.json && cp output/latest.txt visualize/public/latest.txt"
   },
   "author": "Simon Karman",
   "license": "ISC",
