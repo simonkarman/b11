@@ -13,8 +13,20 @@ type Message = {
 }
 
 type Parser = (filename: string) => Message[];
+const txtParser = (filename: string, regex: RegExp, dateFormat: string): Message[] => {
+  const matches = fs.readFileSync(BASE_DATA_PATH + filename).toString().matchAll(regex);
+  const messages: Message[] = [];
+  for (const match of matches) {
+    messages.push({
+      author: match[2].split(' ')[0].toLowerCase().replace('pablo', 'raoul') as Author,
+      timestamp: DateTime.fromFormat(match[1], dateFormat).toISO() || 'none',
+      text: match[3],
+    })
+  }
+  return messages;
+}
 const parsers: { [extension: string]: Parser | undefined } = {
-  csv: (filename) => {
+  '.csv': (filename) => {
     const authorIds = new Map<string, Author>([
       ['443', 'raoul'],
       ['38', 'thomas'],
@@ -32,19 +44,14 @@ const parsers: { [extension: string]: Parser | undefined } = {
       text: record.text_data || '',
     }));
   },
-  txt: (filename) => {
+  '.nl.txt': (filename) => {
     const regex = /^(\d\d-\d\d-\d\d\d\d \d\d:\d\d) - ([^:]+): ?((?:(?!^\d\d-\d\d-\d\d\d\d \d\d:\d\d - (.+):)(?:.|\n))*)$/gm;
-    const matches = fs.readFileSync(BASE_DATA_PATH + filename).toString().matchAll(regex);
-    const messages: Message[] = [];
-    for (const match of matches) {
-      messages.push({
-        author: match[2].split(' ')[0].toLowerCase().replace('pablo', 'raoul') as Author,
-        timestamp: DateTime.fromFormat(match[1], 'dd-MM-yyyy HH:mm').toISO() || 'none',
-        text: match[3],
-      })
-    }
-    return messages;
-  }
+    return txtParser(filename, regex, 'dd-MM-yyyy HH:mm');
+  },
+  '.en.txt': (filename) => {
+    const regex = /^(\d\d\/\d\d\/\d\d\d\d, \d\d:\d\d) - ([^:]+): ?((?:(?!\d\d\/\d\d\/\d\d\d\d, \d\d:\d\d - (.+):)(?:.|\n))*)$/gm;
+    return txtParser(filename, regex, 'dd/MM/yyyy, HH:mm');
+  },
 };
 
 const program = (filenames: string[]): void => {
@@ -52,15 +59,16 @@ const program = (filenames: string[]): void => {
   console.info('Parse input:');
   const allMessages: Message[] = [];
   filenames.forEach(filename => {
-    const extension = filename.substring(filename.lastIndexOf('.') + 1);
-    const parser = parsers[extension];
-    if (parser === undefined) {
-      console.info(`Skipped ${filename} as no parsers exists for .${extension}`)
+    const matchedParsers = Object.entries(parsers).filter(([key]) => filename.endsWith(key));
+    if (matchedParsers.length !== 1 || matchedParsers[0][1] === undefined) {
+      console.info(`Skipped ${filename} as ${matchedParsers.length} parsers exists for: ${filename} [${matchedParsers.map(([key]) => key).join(', ')}]`);
       return;
     }
+    const parser = matchedParsers[0][1];
+    console.info(' -', filename);
     const messages = parser(filename);
     if (messages.length > 0) {
-      console.info(' -', filename, 'found:', messages.length, 'messages (from', messages[0].timestamp, 'until', messages[messages.length - 1].timestamp, ')');
+      console.info('   found:', messages.length, 'messages (from', messages[0].timestamp, 'until', messages[messages.length - 1].timestamp, ')');
     } else {
       console.info(' -', filename, 'found:', 0, 'messages');
     }
@@ -119,7 +127,7 @@ const program = (filenames: string[]): void => {
     yearMonthlies: { [yearMonth: string]: Amount };
     /** The 'exact' amount 11:11s posted per the total amount of people posted that day. */
     collaborations: { [numberOnDay: string]: number };
-    /** The 'exact' amount of times a daily streak of a certain length was reached of posting a 11:11s posted. */
+    /** The 'exact' amount of times a daily streak of a certain length was reached of posting an 11:11s posted. */
     positiveStreaks: Streaks;
     /** The 'exact' amount of times a daily streak of a certain length was reached of not posting any 11:11 post */
     negativeStreaks: Streaks;
@@ -189,7 +197,7 @@ const program = (filenames: string[]): void => {
     JSON.stringify(reports, undefined, 2),
   );
 
-  // Copy files to a latest file
+  // Copy files to latest files
   fs.copyFileSync(`${outputFilename}.txt`, 'output/latest.txt');
   fs.copyFileSync(`${outputFilename}.json`, 'output/latest.json');
 }
