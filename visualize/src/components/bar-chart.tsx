@@ -62,7 +62,8 @@ export const BarChart = () => {
       .attr('class', 'bar')
       // @ts-ignore
       .attr('x', function (d) {
-        return x(d.name) + 10;
+        const xd = x(d.name) ?? 0;
+        return xd + 10;
       })
       .attr('width', x.bandwidth())
       .attr('y', function (d) {
