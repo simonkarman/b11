@@ -1,5 +1,6 @@
 "use client";
 
+import { Card } from '@/components/card';
 import * as d3 from 'd3';
 import { useEffect, useRef, useState } from 'react';
 
@@ -22,7 +23,8 @@ export const BarChart = () => {
       value: 100,
     },
   ]);
-  const svgRef = useRef<SVGSVGElement>();
+  // @ts-ignore
+  const svgRef: any = useRef<SVGSVGElement>();
 
   useEffect(() => {
     // const margin = {top: 20, right: 20, bottom: 30, left: 40};
@@ -83,9 +85,8 @@ export const BarChart = () => {
 
   // @ts-ignore
   return (
-    <div className='w-full sm:w-1/2 xl:w-1/3 p-1 pt-4 space-y-1'>
+    <Card title={'An Examble Bar Chart'} >
       <svg className='w-full border' ref={svgRef} />
-      <p className='px-1 text-sm text-gray-700'>An Example Chart</p>
-    </div>
+    </Card>
   );
 }
