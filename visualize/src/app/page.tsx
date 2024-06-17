@@ -14,9 +14,8 @@ const getValue = (data: { exact: number, close: number }, measure: 'exact' | 'cl
 }
 
 export default function Home() {
-  const txtUrl = 'https://raw.githubusercontent.com/simonkarman/b11/main/output/latest.txt';
+  // TODO: Move to a React context/provider
   const jsonUrl = 'https://raw.githubusercontent.com/simonkarman/b11/main/output/latest.json';
-
   const [jsonData, setJsonData] = useState<Data<any>>({ state: 'loading' });
   useEffect(() => {
     fetch(jsonUrl)
@@ -25,10 +24,12 @@ export default function Home() {
       .catch(error => setJsonData({ state: 'error', error }));
   }, []);
 
+  // TODO: move to a React context/provider
   const [measure, setMeasure] = useState<'exact' | 'close'>('exact');
 
   return (
     <div className='w-full justify-between flex flex-wrap py-4 gap-2'>
+      {/* TODO: create into separate component */}
       <Card title='Lifetime 11:11s'>
         <input type='checkbox' checked={measure === 'exact'} onChange={e => setMeasure(e.target.checked ? 'exact' : 'close')} />
         <label className='ml-2'>Exact Only</label>
