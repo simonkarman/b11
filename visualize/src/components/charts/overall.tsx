@@ -11,6 +11,7 @@ export const Overall = () => {
     });
     return acc;
   }, {} as Record<Person, number | undefined>);
+  const sortedNames = [...names].sort((a, b) => (counts[b] ?? 0) - (counts[a] ?? 0));
   const numberOfDays = DateTime.fromISO(endDate).diff(DateTime.fromISO(startDate), 'days').days;
 
   return <Card title='Overall 11:11s' description='The overall number of 11:11s posted per person'>
@@ -23,9 +24,7 @@ export const Overall = () => {
         </tr>
       </thead>
       <tbody>
-        {names
-          .toSorted((a, b) => (counts[b] ?? 0) - (counts[a] ?? 0))
-          .map(name => (
+        {sortedNames.map(name => (
             <tr key={name}>
               <td className="pr-2">{name[0].toUpperCase() + name.slice(1)}</td>
               <td className="px-2 text-center text-lg font-bold text-red-800">
