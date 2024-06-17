@@ -86,7 +86,7 @@ export const BarChart = () => {
   // @ts-ignore
   return (
     <Card title={'An Examble Bar Chart'} >
-      <svg className='w-full border' ref={svgRef} />
+      <svg className='w-full' ref={svgRef} />
     </Card>
   );
 }
