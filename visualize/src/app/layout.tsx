@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <p>Analyze and view <a
               target='_blank'
               href='https://svsticky.nl/besturen/11'
-              className='underline text-blue-600'
+              className='text-blue-600'
             >B11</a> posts on 11:11.</p>
           </div>
         </header>
