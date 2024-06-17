@@ -16,6 +16,7 @@ const getValue = (data: { exact: number, close: number }, measure: 'exact' | 'cl
 export default function Home() {
   // TODO: Move to a React context/provider
   const jsonUrl = 'https://raw.githubusercontent.com/simonkarman/b11/main/output/latest.json';
+  // @ts-ignore
   const [jsonData, setJsonData] = useState<Data<any>>({ state: 'loading' });
   useEffect(() => {
     fetch(jsonUrl)
@@ -41,7 +42,7 @@ export default function Home() {
               <tr className='border-b'><th className='pr-2'>Name</th><th className='px-2'>Count</th></tr>
             </thead>
             <tbody>
-              {names.map(name => <tr>
+              {names.map(name => <tr key={name}>
                 <td className="pr-2">{name}</td>
                 <td className="px-2 text-lg font-bold text-red-800">{
                   jsonData.state === 'loading'
