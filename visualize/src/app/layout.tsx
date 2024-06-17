@@ -1,3 +1,4 @@
+import { DataDownloader } from '@/components/data-downloader';
 import type { Metadata } from 'next';
 import './globals.css';
 
@@ -22,7 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
         <div className='flex-grow bg-gray-50'>
           <main className='container mx-auto px-2'>
-            {children}
+            <DataDownloader>
+              {children}
+            </DataDownloader>
           </main>
         </div>
       <footer className='w-full border-t-2 border-gray-300'>
