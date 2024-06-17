@@ -9,7 +9,7 @@ export default function Home() {
   const jsonUrl = 'https://raw.githubusercontent.com/simonkarman/b11/main/output/latest.json';
 
   return (
-    <div className='flex flex-wrap p-2 gap-x-[2%] gap-y-4'>
+    <div className='w-full justify-between flex flex-wrap py-4 gap-2'>
       <Card title='Lifetime 11:11s'>
         <p className='text-sm text-gray-600'>The number of 11:11s posted per person over the whole lifetime of the group.</p>
         <table className='text-left'>
