@@ -1,8 +1,18 @@
 "use client";
 
-import { Day, Person } from '@/components/data-downloader';
+import { Day, everyone, Person } from '@/components/utils/data-downloader';
 import { DateTime } from 'luxon';
 import { useState, createContext, PropsWithChildren, useContext } from 'react';
+
+export const stepSizes = ['yearly', 'quarterly', 'monthly', 'weekly', 'daily'] as const;
+export type StepSize = typeof stepSizes[number];
+export const stepSizeToFormat = {
+  'yearly': 'yyyy',
+  'quarterly': 'yyyy-Qq',
+  'monthly': 'yyyy-\'M\'M',
+  'weekly': 'yyyy-\'W\'W',
+  'daily': 'yyyy-MM-dd',
+};
 
 type SelectedData = {
   startDate: string,
@@ -11,6 +21,8 @@ type SelectedData = {
   setEndDate: (date: string) => void,
   people: Person[],
   setPeople: (people: Person[]) => void,
+  stepSize: StepSize,
+  setStepSize: (stepSize: StepSize) => void,
   days: Day[],
 };
 const SelectedDataContext = createContext<SelectedData | null>(null);
@@ -29,15 +41,18 @@ export function DataSelector(props: PropsWithChildren<{ source: Day[] }>) {
   const initialEndDate = source[source.length - 1].date;
   const [startDate, setStartDate] = useState<string>(initialStartDate);
   const [endDate, setEndDate] = useState<string>(initialEndDate);
-  const [people, setPeople] = useState<Person[]>([]);
+  const [people, setPeople] = useState<Person[]>([...everyone]);
+  const [stepSize, setStepSize] = useState<StepSize>('quarterly');
 
   const days = source.filter(day => DateTime.fromISO(day.date) >= DateTime.fromISO(startDate)
-                                 && DateTime.fromISO(day.date) <= DateTime.fromISO(endDate));
+                                 && DateTime.fromISO(day.date) <= DateTime.fromISO(endDate))
+    .map(day => ({ ...day, people: day.people.filter(person => people.length === 0 || people.includes(person)) }));
 
   return <SelectedDataContext.Provider value={{
     startDate, setStartDate,
     endDate, setEndDate,
     people, setPeople,
+    stepSize, setStepSize,
     days,
   }}>
     {props.children}

@@ -1,9 +1,12 @@
-import { DataSelector } from '@/components/data-selector';
+import { DataSelector } from '@/components/utils/data-selector';
 import { PropsWithChildren } from 'react';
 
-export const names = ['raoul', 'thomas', 'yorick', 'robin', 'simon', 'rogier'] as const;
-export type Person = (typeof names)[number];
-export type Day = { date: string, people: Person[] };
+export const everyone = ['raoul', 'thomas', 'yorick', 'robin', 'simon', 'rogier'] as const;
+export type Person = (typeof everyone)[number];
+export type Day = {
+  date: string,
+  people: Person[]
+};
 
 export async function DataDownloader(props: PropsWithChildren) {
   const dataUrl = 'https://raw.githubusercontent.com/simonkarman/b11/main/output/latest.txt';
@@ -14,7 +17,7 @@ export async function DataDownloader(props: PropsWithChildren) {
       .filter(name => !name.startsWith('~'))
       .map(name => name.endsWith(',') ? name.slice(0, -1) : name);
 
-    if (!people.every(name => names.includes(name as unknown as Person))) {
+    if (!people.every(name => everyone.includes(name as unknown as Person))) {
       throw new Error(`Invalid name(s) in line ${lineIndex + 1}: ${line}`);
     }
 

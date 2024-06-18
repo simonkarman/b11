@@ -1,20 +1,20 @@
 import { Card } from '@/components/card';
-import { names, Person } from '@/components/data-downloader';
-import { useSelectedData } from '@/components/data-selector';
+import { Person } from '@/components/utils/data-downloader';
+import { useSelectedData } from '@/components/utils/data-selector';
 import { DateTime } from 'luxon';
 
-export const Overall = () => {
-  const { startDate, endDate, days } = useSelectedData();
+export const OverallTable = () => {
+  const { startDate, endDate, days, people } = useSelectedData();
   const counts = days.reduce((acc, day) => {
     day.people.forEach(person => {
       acc[person] = (acc[person] || 0) + 1;
     });
     return acc;
   }, {} as Record<Person, number | undefined>);
-  const sortedNames = [...names].sort((a, b) => (counts[b] ?? 0) - (counts[a] ?? 0));
+  const sortedNames = [...people].sort((a, b) => (counts[b] ?? 0) - (counts[a] ?? 0));
   const numberOfDays = DateTime.fromISO(endDate).diff(DateTime.fromISO(startDate), 'days').days;
 
-  return <Card title='Overall 11:11s' description='The overall number of 11:11s posted per person'>
+  return <Card title='Overall 11:11s' description='The overall number of 11:11s posted per person.'>
     <table className='text-left'>
       <thead>
         <tr className='border-b'>

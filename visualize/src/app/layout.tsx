@@ -1,4 +1,4 @@
-import { DataDownloader } from '@/components/data-downloader';
+import { DataDownloader } from '@/components/utils/data-downloader';
 import type { Metadata } from 'next';
 import './globals.css';
 
