@@ -3,8 +3,8 @@ import { stepSizes, useSelectedData } from '@/components/utils/data-selector';
 
 export const DataSelectionUi = () => {
   const { startDate, setStartDate, endDate, setEndDate, people, setPeople, stepSize, setStepSize } = useSelectedData();
-  const buttonStyle = 'rounded px-1 border border-gray-400 bg-gray-300 hover:bg-gray-400';
-  return <div className='w-full flex gap-3 flex-wrap text-xs justify-end items-center'>
+  const buttonStyle = 'rounded px-1.5 py-0.5 border border-gray-700 bg-gray-500 hover:bg-gray-600 text-white';
+  return <div className='w-full border border-dotted hover:bg-gray-100 py-1 px-2 flex gap-3 flex-wrap text-xs justify-end items-center text-gray-700'>
     <p>People</p>
     <button className={buttonStyle} onClick={() => {
       setPeople(people.length === 6 ? ['simon', 'rogier'] : [...everyone]);
