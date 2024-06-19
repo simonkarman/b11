@@ -4,9 +4,9 @@ import { Card } from '@/components/card';
 import { colors, Day, Person } from '@/components/utils/data-downloader';
 import { StepSize, stepSizeToFormat, useSelectedData } from '@/components/utils/data-selector';
 import { DateTime } from 'luxon';
-import { ResponsiveContainer, CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
+import { ResponsiveContainer, Line, LineChart, XAxis, YAxis } from 'recharts';
 
-function getAccumalatedData(days: Day[], stepSize: StepSize, people: Person[]) {
+function getAccumulatedData(days: Day[], stepSize: StepSize, people: Person[]) {
   const steps: Record<string, Record<Person, { count: number, acc: number }>> = {};
   days.forEach(day => {
     const date = DateTime.fromISO(day.date);
@@ -32,12 +32,11 @@ function getAccumalatedData(days: Day[], stepSize: StepSize, people: Person[]) {
 
 export const ProgressLineChart = () => {
   const { days, stepSize, people } = useSelectedData();
-  const data = getAccumalatedData(days, stepSize?? 'daily', people);
+  const data = getAccumulatedData(days, stepSize ?? 'daily', people);
   return <Card title={'Progress'} description={'Line chart showing the progress per person over time.'}>
-    <div className='max-w-xl'>
+    <div className='max-w-xl overflow-hidden'>
       <ResponsiveContainer aspect={16/9}>
         <LineChart data={data}>
-          {/*<CartesianGrid stroke="#eee" strokeDasharray="5 5" />*/}
           <XAxis dataKey="name" className='text-xs' />
           <YAxis tickCount={11} orientation='right' domain={[0, 'dataMax']} className='text-xs' />
           {people.map(name => (<Line
