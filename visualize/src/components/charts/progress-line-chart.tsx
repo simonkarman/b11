@@ -1,26 +1,17 @@
 "use client";
 
 import { Card } from '@/components/card';
-import { Person } from '@/components/utils/data-downloader';
+import { colors, Person } from '@/components/utils/data-downloader';
 import { stepSizeToFormat, useSelectedData } from '@/components/utils/data-selector';
 import { DateTime } from 'luxon';
 import { LineChart, XAxis, YAxis, CartesianGrid, Line } from 'recharts';
-
-const colors = [
-  'rgb(248 113 113)',
-  'rgb(239 68 68)',
-  'rgb(220 38 38)',
-  'rgb(185 28 28)',
-  'rgb(153 27 27)',
-  'rgb(127 29 29)',
-];
 
 export const ProgressLineChart = () => {
   const { days, stepSize, people } = useSelectedData();
   const steps: Record<string, Record<Person, { count: number, acc: number }>> = {};
   days.forEach(day => {
     const date = DateTime.fromISO(day.date);
-    const step = date.toFormat(stepSizeToFormat[stepSize]);
+    const step = date.toFormat(stepSizeToFormat(stepSize ?? 'daily'));
     steps[step] = day.people.reduce((acc, person) => {
       acc[person].count += 1;
       return acc;
@@ -48,7 +39,7 @@ export const ProgressLineChart = () => {
         type="monotone"
         connectNulls
         dataKey={name}
-        stroke={colors[index]}
+        stroke={colors[name].rgb}
         dot={false}
       />))}
     </LineChart>

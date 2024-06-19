@@ -14,10 +14,10 @@ export const DataSelectionUi = () => {
     <p>|</p>
     <p>StepSize</p>
     <button className={buttonStyle} onClick={() => {
-      const index = (stepSizes.indexOf(stepSize) + 1) % stepSizes.length;
-      setStepSize(stepSizes[index]);
+      const index = (stepSizes.indexOf(stepSize!) + 1) % (stepSizes.length + 1);
+      setStepSize(index === stepSizes.length ? undefined : stepSizes[index]);
     }}>
-      {stepSize}
+      {stepSize ?? 'default'}
     </button>
     <p>|</p>
     <p>Range {startDate} to {endDate}</p>

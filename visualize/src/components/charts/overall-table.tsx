@@ -1,5 +1,5 @@
 import { Card } from '@/components/card';
-import { Person } from '@/components/utils/data-downloader';
+import { colors, Person } from '@/components/utils/data-downloader';
 import { useSelectedData } from '@/components/utils/data-selector';
 import { DateTime } from 'luxon';
 
@@ -27,7 +27,7 @@ export const OverallTable = () => {
         {sortedNames.map(name => (
             <tr key={name}>
               <td className="pr-2">{name[0].toUpperCase() + name.slice(1)}</td>
-              <td className="px-2 text-center text-lg font-bold text-red-800">
+              <td className={`px-2 text-center text-lg font-bold ${colors[name].className}`}>
                 {counts[name] ?? 0}
               </td>
               <td className="px-2 text-center">

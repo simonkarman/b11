@@ -6,12 +6,14 @@ import { useState, createContext, PropsWithChildren, useContext } from 'react';
 
 export const stepSizes = ['yearly', 'quarterly', 'monthly', 'weekly', 'daily'] as const;
 export type StepSize = typeof stepSizes[number];
-export const stepSizeToFormat = {
-  'yearly': 'yyyy',
-  'quarterly': 'yyyy-Qq',
-  'monthly': 'yyyy-\'M\'M',
-  'weekly': 'yyyy-\'W\'W',
-  'daily': 'yyyy-MM-dd',
+export const stepSizeToFormat = (stepSize: StepSize) => {
+  return {
+    'yearly': 'yyyy',
+    'quarterly': 'yyyy-Qq',
+    'monthly': 'yyyy-\'M\'M',
+    'weekly': 'yyyy-\'W\'W',
+    'daily': 'yyyy-MM-dd',
+  }[stepSize];
 };
 
 type SelectedData = {
@@ -21,8 +23,8 @@ type SelectedData = {
   setEndDate: (date: string) => void,
   people: Person[],
   setPeople: (people: Person[]) => void,
-  stepSize: StepSize,
-  setStepSize: (stepSize: StepSize) => void,
+  stepSize: StepSize | undefined,
+  setStepSize: (stepSize: StepSize | undefined) => void,
   days: Day[],
 };
 const SelectedDataContext = createContext<SelectedData | null>(null);
@@ -42,7 +44,7 @@ export function DataSelector(props: PropsWithChildren<{ source: Day[] }>) {
   const [startDate, setStartDate] = useState<string>(initialStartDate);
   const [endDate, setEndDate] = useState<string>(initialEndDate);
   const [people, setPeople] = useState<Person[]>([...everyone]);
-  const [stepSize, setStepSize] = useState<StepSize>('quarterly');
+  const [stepSize, setStepSize] = useState<StepSize | undefined>(undefined);
 
   const days = source.filter(day => DateTime.fromISO(day.date) >= DateTime.fromISO(startDate)
                                  && DateTime.fromISO(day.date) <= DateTime.fromISO(endDate))
