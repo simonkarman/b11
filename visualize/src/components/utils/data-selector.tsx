@@ -1,7 +1,7 @@
 "use client";
 
 import { Day, everyone, Person } from '@/components/utils/data-downloader';
-import { DateTime } from 'luxon';
+import { DateTime, DateTimeUnit } from 'luxon';
 import { useState, createContext, PropsWithChildren, useContext } from 'react';
 
 export const stepSizes = ['yearly', 'quarterly', 'monthly', 'weekly', 'daily'] as const;
@@ -15,6 +15,15 @@ export const stepSizeToFormat = (stepSize: StepSize) => {
     'daily': 'yyyy-MM-dd',
   }[stepSize];
 };
+export const toDateTimeUnit = (stepSize: StepSize): DateTimeUnit => {
+  switch (stepSize) {
+    case 'yearly': return 'year';
+    case 'quarterly': return 'quarter';
+    case 'monthly': return 'month';
+    case 'weekly': return 'week';
+    case 'daily': return 'day';
+  }
+}
 
 type SelectedData = {
   startDate: string,
