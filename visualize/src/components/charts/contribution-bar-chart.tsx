@@ -48,6 +48,7 @@ export const ContributionBarChart = () => {
           />
           <YAxis className='text-xs' />
           {people.map(name => <Bar
+            key={name}
             dataKey={name}
             fill={colors[name].rgb}
           />)}
