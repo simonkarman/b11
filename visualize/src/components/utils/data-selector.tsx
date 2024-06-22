@@ -4,19 +4,10 @@ import { Day, everyone, Person } from '@/components/utils/data-downloader';
 import { DateTime, DateTimeUnit } from 'luxon';
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
 
-export const stepSizes = ['yearly', 'quarterly', 'monthly', 'weekly', 'daily'] as const;
-export type StepSize = typeof stepSizes[number];
-export const stepSizeToFormat = (stepSize: StepSize) => {
-  return {
-    'yearly': 'yyyy',
-    'quarterly': 'yyyy-Qq',
-    'monthly': 'yyyy-\'M\'M',
-    'weekly': 'yyyy-\'W\'W',
-    'daily': 'yyyy-MM-dd',
-  }[stepSize];
-};
-export const stepSizeToDateTimeUnit = (stepSize: StepSize): DateTimeUnit => {
-  switch (stepSize) {
+export const granularities = ['yearly', 'quarterly', 'monthly', 'weekly', 'daily'] as const;
+export type Granularity = typeof granularities[number];
+export const granularityToDateTimeUnit = (granularity: Granularity): DateTimeUnit => {
+  switch (granularity) {
     case 'yearly': return 'year';
     case 'quarterly': return 'quarter';
     case 'monthly': return 'month';
@@ -34,8 +25,8 @@ type SelectedData = {
   setEndDate: (date: string) => void,
   people: Person[],
   setPeople: (people: Person[]) => void,
-  stepSize: StepSize | undefined,
-  setStepSize: (stepSize: StepSize | undefined) => void,
+  granularity: Granularity | undefined,
+  setGranularity: (granularity: Granularity | undefined) => void,
   days: Day[],
 };
 const SelectedDataContext = createContext<SelectedData | null>(null);
@@ -55,7 +46,7 @@ export function DataSelector(props: PropsWithChildren<{ source: Day[] }>) {
   const [startDate, setStartDate] = useState<string>(initialStartDate);
   const [endDate, setEndDate] = useState<string>(initialEndDate);
   const [people, setPeople] = useState<Person[]>([...everyone]);
-  const [stepSize, setStepSize] = useState<StepSize | undefined>(undefined);
+  const [granularity, setGranularity] = useState<Granularity | undefined>(undefined);
 
   const days = source.filter(day => DateTime.fromISO(day.date) >= DateTime.fromISO(startDate)
                                  && DateTime.fromISO(day.date) <= DateTime.fromISO(endDate))
@@ -65,7 +56,7 @@ export function DataSelector(props: PropsWithChildren<{ source: Day[] }>) {
     initialStartDate, startDate, setStartDate,
     initialEndDate, endDate, setEndDate,
     people, setPeople,
-    stepSize, setStepSize,
+    granularity, setGranularity,
     days,
   }}>
     {props.children}

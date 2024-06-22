@@ -1,9 +1,9 @@
 import { colors, everyone } from '@/components/utils/data-downloader';
-import { stepSizes, useSelectedData } from '@/components/utils/data-selector';
+import { granularities, useSelectedData } from '@/components/utils/data-selector';
 import { DateTime } from 'luxon';
 
 export const DataSelectionUi = () => {
-  const { initialStartDate, initialEndDate, startDate, setStartDate, endDate, setEndDate, people, setPeople, stepSize, setStepSize } = useSelectedData();
+  const { initialStartDate, initialEndDate, startDate, setStartDate, endDate, setEndDate, people, setPeople, granularity, setGranularity } = useSelectedData();
   const buttonStyle = 'rounded px-1.5 py-0.5 border border-gray-700 bg-gray-500 hover:bg-gray-600 text-white';
   const sectionClasses = 'border border-dotted hover:bg-gray-100 py-1 px-2 flex gap-3 flex-wrap text-xs justify-end items-center text-gray-700';
 
@@ -37,12 +37,12 @@ export const DataSelectionUi = () => {
       </button>)}
     </div>
     <div className={sectionClasses}>
-      <p>StepSize</p>
+      <p>Granularity</p>
       <button className={buttonStyle} onClick={() => {
-        const index = (stepSizes.indexOf(stepSize!) + 1) % (stepSizes.length + 1);
-        setStepSize(index === stepSizes.length ? undefined : stepSizes[index]);
+        const index = (granularities.indexOf(granularity!) + 1) % (granularities.length + 1);
+        setGranularity(index === granularities.length ? undefined : granularities[index]);
       }}>
-        {stepSize ?? 'default'}
+        {granularity ?? 'default'}
       </button>
     </div>
     <div className={sectionClasses}>
