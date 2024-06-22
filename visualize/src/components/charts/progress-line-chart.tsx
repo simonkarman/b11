@@ -36,18 +36,44 @@ export const ProgressLineChart = () => {
   const { days, granularity: _granularity, people, startDate, endDate } = useSelectedData();
   const granularity = _granularity ?? 'daily';
   const data = getAccumulatedData(days, granularity, people);
+  const gdt = granularityToDateTimeUnit(granularity);
+  const domainStart = DateTime.fromISO(startDate).startOf(gdt);
+  const domainEnd = DateTime.fromISO(endDate).startOf(gdt);
+  const domainDays = domainEnd.diff(domainStart, 'days').days;
+  const halfDomain = domainStart.plus({ day: Math.floor(domainDays / 2) });
+  const tickLocations = domainDays < 8 ? [domainStart, halfDomain, domainEnd] : [
+    domainStart,
+    domainStart.plus({ day: Math.floor(domainDays / 4) }),
+    halfDomain,
+    domainStart.plus({ day: Math.floor((3 * domainDays) / 4) }),
+    domainEnd,
+  ];
   return <Card title={'Progress'} description={`Line chart showing the ${granularity} progress per person over time.`}>
     <div className='max-w-xl overflow-hidden'>
       <ResponsiveContainer aspect={16/9}>
         <LineChart syncId='default' data={data}>
           <Legend />
-          <Tooltip />
-          <CartesianGrid stroke="#eee" strokeDasharray="7 5"/>
-          <XAxis dataKey="groupName" type='number' className='text-xs' tickCount={10} domain={[
-            DateTime.fromISO(startDate).startOf(granularityToDateTimeUnit(granularity)).toMillis(),
-            DateTime.fromISO(endDate).startOf(granularityToDateTimeUnit(granularity)).toMillis(),
-          ]} />
-          <YAxis tickCount={11} orientation='right' domain={[0, 'dataMax']} className='text-xs' />
+          <Tooltip
+            position={{ x: 10, y: 10 }}
+            labelFormatter={value => <pre>{DateTime.fromMillis(value).toISODate()}</pre>}
+            animationDuration={250}
+            animationEasing={'ease-in-out'}
+          />
+          <CartesianGrid stroke="#eee" strokeDasharray="7 5" />
+          <XAxis
+            dataKey="groupName" type='number' className='text-xs'
+            domain={[ domainStart, domainEnd ].map(d => d.toMillis())}
+            ticks={tickLocations.map(d => d.toMillis())}
+            interval={'preserveStartEnd'}
+            tickFormatter={tickMillis => DateTime.fromMillis(tickMillis).toISODate()!}
+          />
+          <YAxis
+            tickCount={11}
+            minTickGap={1}
+            orientation='right'
+            domain={[0, 'dataMax']}
+            className='text-xs'
+          />
           {people.map(name => (<Line
             key={name}
             type={'linear'}
