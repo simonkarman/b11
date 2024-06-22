@@ -15,7 +15,7 @@ export const stepSizeToFormat = (stepSize: StepSize) => {
     'daily': 'yyyy-MM-dd',
   }[stepSize];
 };
-export const toDateTimeUnit = (stepSize: StepSize): DateTimeUnit => {
+export const stepSizeToDateTimeUnit = (stepSize: StepSize): DateTimeUnit => {
   switch (stepSize) {
     case 'yearly': return 'year';
     case 'quarterly': return 'quarter';

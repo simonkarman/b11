@@ -2,14 +2,14 @@
 
 import { Card } from '@/components/card';
 import { colors, Day, Person } from '@/components/utils/data-downloader';
-import { StepSize, stepSizes, stepSizeToFormat, toDateTimeUnit, useSelectedData } from '@/components/utils/data-selector';
+import { StepSize, stepSizes, stepSizeToFormat, stepSizeToDateTimeUnit, useSelectedData } from '@/components/utils/data-selector';
 import { DateTime, DateTimeUnit } from 'luxon';
 import { ResponsiveContainer, Line, LineChart, XAxis, YAxis } from 'recharts';
 
 function getAccumulatedData(days: Day[], stepSize: StepSize, people: Person[]) {
   const steps: Record<string, Record<Person, { count: number, acc: number }>> = {};
   days.forEach(day => {
-    const stepStartDate = DateTime.fromISO(day.date).startOf(toDateTimeUnit(stepSize)).toISODate();
+    const stepStartDate = DateTime.fromISO(day.date).startOf(stepSizeToDateTimeUnit(stepSize)).toISODate();
     if (stepStartDate === null) {
       return;
     }
@@ -33,15 +33,16 @@ function getAccumulatedData(days: Day[], stepSize: StepSize, people: Person[]) {
 }
 
 export const ProgressLineChart = () => {
-  const { days, stepSize, people, startDate, endDate } = useSelectedData();
-  const data = getAccumulatedData(days, stepSize ?? 'daily', people);
+  const { days, stepSize: _stepSize, people, startDate, endDate } = useSelectedData();
+  const stepSize = _stepSize ?? 'daily';
+  const data = getAccumulatedData(days, stepSize, people);
   return <Card title={'Progress'} description={'Line chart showing the progress per person over time.'}>
     <div className='max-w-xl overflow-hidden'>
       <ResponsiveContainer aspect={16/9}>
         <LineChart data={data}>
           <XAxis dataKey="stepName" type='number' className='text-xs' tickCount={10} domain={[
-            DateTime.fromISO(startDate).toMillis(),
-            DateTime.fromISO(endDate).toMillis(),
+            DateTime.fromISO(startDate).startOf(stepSizeToDateTimeUnit(stepSize)).toMillis(),
+            DateTime.fromISO(endDate).startOf(stepSizeToDateTimeUnit(stepSize)).toMillis(),
           ]} label={(v: number) => 'hello' + v} />
           <YAxis tickCount={11} orientation='right' domain={[0, 'dataMax']} className='text-xs' />
           {people.map(name => (<Line
