@@ -2,7 +2,7 @@
 
 import { Day, everyone, Person } from '@/components/utils/data-downloader';
 import { DateTime, DateTimeUnit } from 'luxon';
-import { useState, createContext, PropsWithChildren, useContext } from 'react';
+import { createContext, PropsWithChildren, useContext, useState } from 'react';
 
 export const stepSizes = ['yearly', 'quarterly', 'monthly', 'weekly', 'daily'] as const;
 export type StepSize = typeof stepSizes[number];

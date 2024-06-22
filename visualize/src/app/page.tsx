@@ -1,7 +1,7 @@
 "use client";
 
-import { ProgressLineChart } from '@/components/charts/progress-line-chart';
 import { OverallTable } from '@/components/charts/overall-table';
+import { ProgressLineChart } from '@/components/charts/progress-line-chart';
 import { DataSelectionUi } from '@/components/data-selection-ui';
 
 export default function Home() {

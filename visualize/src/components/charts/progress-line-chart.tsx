@@ -2,9 +2,9 @@
 
 import { Card } from '@/components/card';
 import { colors, Day, Person } from '@/components/utils/data-downloader';
-import { StepSize, stepSizes, stepSizeToFormat, stepSizeToDateTimeUnit, useSelectedData } from '@/components/utils/data-selector';
-import { DateTime, DateTimeUnit } from 'luxon';
-import { ResponsiveContainer, Line, LineChart, XAxis, YAxis } from 'recharts';
+import { StepSize, stepSizeToDateTimeUnit, useSelectedData } from '@/components/utils/data-selector';
+import { DateTime } from 'luxon';
+import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
 function getAccumulatedData(days: Day[], stepSize: StepSize, people: Person[]) {
   const steps: Record<string, Record<Person, { count: number, acc: number }>> = {};
