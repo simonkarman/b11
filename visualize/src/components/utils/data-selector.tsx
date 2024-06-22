@@ -26,8 +26,10 @@ export const stepSizeToDateTimeUnit = (stepSize: StepSize): DateTimeUnit => {
 }
 
 type SelectedData = {
+  initialStartDate: string,
   startDate: string,
   setStartDate: (date: string) => void,
+  initialEndDate: string,
   endDate: string,
   setEndDate: (date: string) => void,
   people: Person[],
@@ -60,8 +62,8 @@ export function DataSelector(props: PropsWithChildren<{ source: Day[] }>) {
     .map(day => ({ ...day, people: day.people.filter(person => people.length === 0 || people.includes(person)) }));
 
   return <SelectedDataContext.Provider value={{
-    startDate, setStartDate,
-    endDate, setEndDate,
+    initialStartDate, startDate, setStartDate,
+    initialEndDate, endDate, setEndDate,
     people, setPeople,
     stepSize, setStepSize,
     days,

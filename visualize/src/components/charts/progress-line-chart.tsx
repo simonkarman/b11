@@ -36,7 +36,7 @@ export const ProgressLineChart = () => {
   const { days, stepSize: _stepSize, people, startDate, endDate } = useSelectedData();
   const stepSize = _stepSize ?? 'daily';
   const data = getAccumulatedData(days, stepSize, people);
-  return <Card title={'Progress'} description={'Line chart showing the progress per person over time.'}>
+  return <Card title={'Progress'} description={`Line chart showing the ${stepSize} progress per person over time.`}>
     <div className='max-w-xl overflow-hidden'>
       <ResponsiveContainer aspect={16/9}>
         <LineChart data={data}>
