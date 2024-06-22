@@ -1,6 +1,8 @@
 # Visualize
 This is a [Next.js](https://nextjs.org/) that visualizes the data using [recharts](https://recharts.org). This app can be found running on [b11-11.netlify.app](https://b11-11.netlify.app/).
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7ebdcebf-ebd5-4540-8138-ddcde2c649b0/deploy-status)](https://app.netlify.com/sites/b11-11/deploys)
+
 ## Getting Started
 If you would like to run the visualization locally. You can run the commands.
 ```bash
