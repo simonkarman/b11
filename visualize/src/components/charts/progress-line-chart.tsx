@@ -46,7 +46,7 @@ export const ProgressLineChart = () => {
           <XAxis dataKey="stepName" type='number' className='text-xs' tickCount={10} domain={[
             DateTime.fromISO(startDate).startOf(stepSizeToDateTimeUnit(stepSize)).toMillis(),
             DateTime.fromISO(endDate).startOf(stepSizeToDateTimeUnit(stepSize)).toMillis(),
-          ]} label={(v: number) => 'hello' + v} />
+          ]} />
           <YAxis tickCount={11} orientation='right' domain={[0, 'dataMax']} className='text-xs' />
           {people.map(name => (<Line
             key={name}

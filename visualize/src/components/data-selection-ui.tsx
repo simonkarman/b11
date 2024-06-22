@@ -25,7 +25,11 @@ export const DataSelectionUi = () => {
         className={`${buttonStyle} flex items-center`}
         disabled={people.length === 1 && people.includes(name)}
         onClick={() => {
-          setPeople(people.includes(name) ? people.filter(n => n !== name) : [...people, name]);
+          if (people.includes(name)) {
+            setPeople(people.filter(n => n !== name));
+          } else {
+            setPeople(everyone.filter(n => people.includes(n) || n === name));
+          }
         }}>
         <span
           className={`w-3 h-3 border-gray-300 rounded border inline-block ${people.includes(name) ? colors[name].bgClass : 'bg-gray-400'} mr-1.5`}/>
