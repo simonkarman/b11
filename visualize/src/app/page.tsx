@@ -1,5 +1,6 @@
 "use client";
 
+import { ContributionBarChart } from '@/components/charts/contribution-bar-chart';
 import { OverallTable } from '@/components/charts/overall-table';
 import { ProgressLineChart } from '@/components/charts/progress-line-chart';
 import { DataSelectionUi } from '@/components/data-selection-ui';
@@ -10,6 +11,7 @@ export default function Home() {
       <DataSelectionUi />
       <OverallTable />
       <ProgressLineChart />
+      <ContributionBarChart />
     </div>
   </>);
 }

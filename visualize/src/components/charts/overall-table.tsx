@@ -20,7 +20,7 @@ export const OverallTable = () => {
         <tr className='border-b'>
           <th className='pr-2'>Name</th>
           <th className='px-2 text-center'>Count</th>
-          <th className='px-2 text-center'>%</th>
+          <th className='px-2 text-center'>% of {numberOfDays} days</th>
         </tr>
       </thead>
       <tbody>

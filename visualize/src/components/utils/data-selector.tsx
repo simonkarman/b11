@@ -6,6 +6,15 @@ import { createContext, PropsWithChildren, useContext, useState } from 'react';
 
 export const granularities = ['yearly', 'quarterly', 'monthly', 'weekly', 'daily'] as const;
 export type Granularity = typeof granularities[number];
+export const granularityToFormat = (granularity: Granularity) => {
+  return {
+    'yearly': 'yyyy',
+    'quarterly': '\'Q\'q - yyyy',
+    'monthly': 'LLL yyyy',
+    'weekly': '\'Week\' W - yyyy',
+    'daily': 'yyyy-MM-dd',
+  }[granularity];
+};
 export const granularityToDateTimeUnit = (granularity: Granularity): DateTimeUnit => {
   switch (granularity) {
     case 'yearly': return 'year';

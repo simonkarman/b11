@@ -2,7 +2,7 @@
 
 import { Card } from '@/components/card';
 import { colors, Day, Person } from '@/components/utils/data-downloader';
-import { Granularity, granularityToDateTimeUnit, useSelectedData } from '@/components/utils/data-selector';
+import { Granularity, granularityToDateTimeUnit, granularityToFormat, useSelectedData } from '@/components/utils/data-selector';
 import { DateTime } from 'luxon';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
@@ -48,24 +48,27 @@ export const ProgressLineChart = () => {
     domainStart.plus({ day: Math.floor((3 * domainDays) / 4) }),
     domainEnd,
   ];
+  const labelFormatter = (v: number) => DateTime.fromMillis(v).toISODate()!;
   return <Card title={'Progress'} description={`Line chart showing the ${granularity} progress per person over time.`}>
     <div className='max-w-xl overflow-hidden'>
-      <ResponsiveContainer aspect={16/9}>
+      <ResponsiveContainer aspect={16 / 9}>
         <LineChart syncId='default' data={data}>
           <Legend />
           <Tooltip
             position={{ x: 10, y: 10 }}
-            labelFormatter={value => <pre>{DateTime.fromMillis(value).toISODate()}</pre>}
+            labelFormatter={v => <pre>{labelFormatter(v)}</pre>}
             animationDuration={250}
             animationEasing={'ease-in-out'}
           />
           <CartesianGrid stroke="#eee" strokeDasharray="7 5" />
           <XAxis
-            dataKey="groupName" type='number' className='text-xs'
+            dataKey="groupName"
+            type='number'
+            className='text-xs'
             domain={[ domainStart, domainEnd ].map(d => d.toMillis())}
             ticks={tickLocations.map(d => d.toMillis())}
             interval={'preserveStartEnd'}
-            tickFormatter={tickMillis => DateTime.fromMillis(tickMillis).toISODate()!}
+            tickFormatter={labelFormatter}
           />
           <YAxis
             tickCount={11}
