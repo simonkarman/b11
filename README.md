@@ -1,6 +1,8 @@
 # B11
 Analyze and view [B11](https://svsticky.nl/nl/besturen/11) posts on 11:11
 
+![Visualization](./visualization.png)
+
 ## Getting started
 If you would like to analyze the B11 posts on 11:11, you'll have to follow three steps. First add the data, secondly run the analysis, and lastly visualize the results.
 
