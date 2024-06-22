@@ -29,15 +29,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </main>
         </div>
       <footer className='w-full border-t-2 border-gray-300'>
-        <div className='container mx-auto p-4'>
-          <p className='text-center'>
-            2024 - <a
+        <div className='container mx-auto p-3'>
+          <p className='text-center text-sm'>
+            [2024] ❤️ <a
               target='_blank'
               href='https://github.com/simonkarman/b11'
               className='text-blue-600'
             >
-              Source
-            </a>
+              GitHub Source
+            </a> by <a
+              target='_blank'
+              href='https://simonkarman.nl'
+              className='text-blue-600'
+            >Simon Karman</a>.
           </p>
         </div>
       </footer>

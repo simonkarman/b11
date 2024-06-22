@@ -1,4 +1,4 @@
-## Visualize
+# Visualize
 This is a [Next.js](https://nextjs.org/) that visualizes the data using [recharts](https://recharts.org). This app can be found running on [b11-11.netlify.app](https://b11-11.netlify.app/).
 
 ## Getting Started
