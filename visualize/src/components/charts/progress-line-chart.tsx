@@ -4,7 +4,7 @@ import { Card } from '@/components/card';
 import { colors, Day, Person } from '@/components/utils/data-downloader';
 import { StepSize, stepSizeToDateTimeUnit, useSelectedData } from '@/components/utils/data-selector';
 import { DateTime } from 'luxon';
-import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 function getAccumulatedData(days: Day[], stepSize: StepSize, people: Person[]) {
   const steps: Record<string, Record<Person, { count: number, acc: number }>> = {};
@@ -39,7 +39,10 @@ export const ProgressLineChart = () => {
   return <Card title={'Progress'} description={`Line chart showing the ${stepSize} progress per person over time.`}>
     <div className='max-w-xl overflow-hidden'>
       <ResponsiveContainer aspect={16/9}>
-        <LineChart data={data}>
+        <LineChart syncId='default' data={data}>
+          <Legend />
+          <Tooltip />
+          <CartesianGrid stroke="#eee" strokeDasharray="7 5"/>
           <XAxis dataKey="stepName" type='number' className='text-xs' tickCount={10} domain={[
             DateTime.fromISO(startDate).startOf(stepSizeToDateTimeUnit(stepSize)).toMillis(),
             DateTime.fromISO(endDate).startOf(stepSizeToDateTimeUnit(stepSize)).toMillis(),
