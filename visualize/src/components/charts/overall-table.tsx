@@ -27,7 +27,7 @@ export const OverallTable = () => {
         {sortedNames.map(name => (
             <tr key={name}>
               <td className="pr-2">{name[0].toUpperCase() + name.slice(1)}</td>
-              <td className={`px-2 text-center text-lg font-bold ${colors[name].className}`}>
+              <td className={`px-2 text-center text-lg font-bold ${colors[name].textClass}`}>
                 {counts[name] ?? 0}
               </td>
               <td className="px-2 text-center">

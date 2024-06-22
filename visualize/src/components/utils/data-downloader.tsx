@@ -3,12 +3,12 @@ import { PropsWithChildren } from 'react';
 
 export const everyone = ['raoul', 'thomas', 'yorick', 'robin', 'simon', 'rogier'] as const;
 export const colors = {
-  raoul: { rgb: 'rgb(67 56 202)', className: 'text-indigo-700' },
-  thomas: { rgb: 'rgb(21 128 61)', className: 'text-green-700' },
-  yorick: { rgb: 'rgb(14 116 144)', className: 'text-cyan-700' },
-  robin: { rgb: 'rgb(126 34 206)', className: 'text-purple-700' },
-  simon: { rgb: 'rgb(180 83 9)', className: 'text-amber-700' },
-  rogier: { rgb: 'rgb(185 28 28)', className: 'text-red-700' },
+  raoul: { rgb: 'rgb(67 56 202)', textClass: 'text-indigo-700', bgClass: 'bg-indigo-700' },
+  thomas: { rgb: 'rgb(21 128 61)', textClass: 'text-green-700', bgClass: 'bg-green-700' },
+  yorick: { rgb: 'rgb(14 116 144)', textClass: 'text-cyan-700', bgClass: 'bg-cyan-700' },
+  robin: { rgb: 'rgb(126 34 206)', textClass: 'text-purple-700', bgClass: 'bg-purple-700' },
+  simon: { rgb: 'rgb(180 83 9)', textClass: 'text-amber-700', bgClass: 'bg-amber-700' },
+  rogier: { rgb: 'rgb(185 28 28)', textClass: 'text-red-700', bgClass: 'bg-red-700' },
 };
 export type Person = (typeof everyone)[number];
 export type Day = {
