@@ -905,3 +905,10 @@
 2024-06-13 simon, yorick, robin, rogier
 2024-06-14 rogier, yorick, thomas, raoul
 2024-06-15 raoul, rogier, robin
+2024-06-16 simon, robin, yorick
+2024-06-17 rogier, robin, raoul
+2024-06-18 rogier, simon
+2024-06-19 rogier
+2024-06-21 rogier, robin
+2024-06-22 yorick
+2024-06-23 robin, simon, yorick, rogier, raoul
