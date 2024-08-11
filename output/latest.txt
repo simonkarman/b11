@@ -931,3 +931,31 @@
 2024-07-11 simon, rogier
 2024-07-12 rogier, thomas, robin
 2024-07-13 yorick, simon, rogier, thomas
+2024-07-14 rogier, thomas, yorick, simon
+2024-07-15 robin, yorick, rogier, raoul, thomas
+2024-07-16 rogier, simon, yorick
+2024-07-17 robin
+2024-07-18 simon, raoul, rogier, robin, thomas
+2024-07-20 simon, rogier, robin, ~yorick
+2024-07-21 simon, yorick
+2024-07-22 simon, raoul, thomas, robin
+2024-07-23 rogier, simon, yorick, raoul, robin
+2024-07-24 rogier, simon, thomas, robin, raoul
+2024-07-25 rogier, yorick, robin
+2024-07-26 rogier, yorick, robin, thomas, raoul
+2024-07-27 raoul, rogier, yorick
+2024-07-28 simon, yorick, rogier, robin
+2024-07-29 thomas, robin, raoul
+2024-07-30 yorick, simon
+2024-07-31 simon, thomas, raoul, robin, rogier
+2024-08-01 rogier, simon, thomas, raoul
+2024-08-02 robin, rogier, yorick, simon
+2024-08-03 yorick, thomas, rogier
+2024-08-04 yorick, thomas, rogier, simon
+2024-08-05 robin, yorick
+2024-08-06 raoul, robin, rogier
+2024-08-07 robin, yorick, rogier, thomas, simon
+2024-08-08 thomas, yorick, robin
+2024-08-09 rogier, raoul, robin, thomas
+2024-08-10 yorick, robin
+2024-08-11 thomas, simon
