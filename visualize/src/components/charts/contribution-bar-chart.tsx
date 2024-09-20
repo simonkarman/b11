@@ -1,8 +1,8 @@
-import { Card } from '@/components/card';
+import { capitalize, Card } from '@/components/card';
 import { colors, Day, Person } from '@/components/utils/data-downloader';
 import { granularities, Granularity, granularityToDateTimeUnit, granularityToFormat, useSelectedData } from '@/components/utils/data-selector';
 import { DateTime } from 'luxon';
-import { Bar, BarChart, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 function groupContributions(days: Day[], granularity: Granularity) {
   const groups: Record<string, Record<Person, number>> = {};
@@ -34,27 +34,26 @@ export const ContributionBarChart = () => {
   const granularity = granularities[granularityIndex];
 
   const labelFormatter = (v: number) => DateTime.fromMillis(v).toFormat(granularityToFormat(granularity))!;
-  return <Card title="Contribution" description={`Bar chart showing the ${granularity} contribution per person.`}>
-    <div className='max-w-xl overflow-hidden'>
-      <ResponsiveContainer aspect={16 / 9}>
-        <BarChart data={data}>
-          <Tooltip
-            labelFormatter={labelFormatter}
-          />
-          <XAxis
-            dataKey='group'
-            className='text-xs'
-            tickFormatter={labelFormatter}
-          />
-          <YAxis className='text-xs' />
-          {people.map(name => <Bar
-            key={name}
-            dataKey={name}
-            fill={colors[name].rgb}
-          />)}
-          <Legend />
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
+  return <Card isChart title="Contribution" description={`${capitalize(granularity)} contribution per person.`}>
+    <ResponsiveContainer aspect={16 / 9} maxHeight={500}>
+      <BarChart data={data}>
+        <Tooltip
+          labelFormatter={labelFormatter}
+          contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}
+          cursor={{ fill: 'rgba(40, 40, 90, 0.05)' }}
+        />
+        <XAxis
+          dataKey='group'
+          className='text-xs'
+          tickFormatter={labelFormatter}
+        />
+        <YAxis className='text-xs' width={25} />
+        {people.map(name => <Bar
+          key={name}
+          dataKey={name}
+          fill={colors[name].rgb}
+        />)}
+      </BarChart>
+    </ResponsiveContainer>
   </Card>
 }

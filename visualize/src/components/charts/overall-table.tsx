@@ -12,15 +12,15 @@ export const OverallTable = () => {
     return acc;
   }, {} as Record<Person, number | undefined>);
   const sortedNames = [...people].sort((a, b) => (counts[b] ?? 0) - (counts[a] ?? 0));
-  const numberOfDays = DateTime.fromISO(endDate).diff(DateTime.fromISO(startDate), 'days').days;
+  const numberOfDays = DateTime.fromISO(endDate).diff(DateTime.fromISO(startDate), 'days').days + 1;
 
-  return <Card title='Overall 11:11s' description='The overall number of 11:11s posted per person.'>
+  return <Card title='Overall 11:11s' description='Number of 11:11s posted per person.'>
     <table className='text-left'>
       <thead>
-        <tr className='border-b'>
-          <th className='pr-2'>Name</th>
-          <th className='px-2 text-center'>Count</th>
-          <th className='px-2 text-center'>% of {numberOfDays} days</th>
+        <tr>
+          <th className='text-slate-700 text-sm pr-2'></th>
+          <th className='text-slate-700 text-sm px-2 text-center'>Amount</th>
+          <th className='text-slate-700 text-sm px-2 text-center'>%</th>
         </tr>
       </thead>
       <tbody>
@@ -30,12 +30,13 @@ export const OverallTable = () => {
               <td className={`px-2 text-center text-lg font-bold ${colors[name].textClass}`}>
                 {counts[name] ?? 0}
               </td>
-              <td className="px-2 text-center">
-                {(counts[name] ?? 0) / numberOfDays * 100 | 0}%
+              <td className="px-2 text-center text-md text-slate-800">
+                {((counts[name] ?? 0) / numberOfDays * 100).toFixed(1)}%
               </td>
             </tr>
           ))}
       </tbody>
     </table>
+    <p className='mt-2 text-xs text-slate-600'>% = percentage of {numberOfDays} days</p>
   </Card>;
 }

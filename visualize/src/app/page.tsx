@@ -3,15 +3,14 @@
 import { ContributionBarChart } from '@/components/charts/contribution-bar-chart';
 import { OverallTable } from '@/components/charts/overall-table';
 import { ProgressLineChart } from '@/components/charts/progress-line-chart';
-import { DataSelectionUi } from '@/components/data-selection-ui';
+import { Layout } from '@/components/utils/layout';
 
 export default function Home() {
-  return (<>
-    <div className='w-full justify-between flex flex-wrap py-2 gap-2'>
-      <DataSelectionUi />
-      <OverallTable />
-      <ProgressLineChart />
-      <ContributionBarChart />
+  return (<Layout>
+    <div className='w-full flex flex-col lg:flex-row flex-wrap justify-between py-2 gap-5'>
+      <OverallTable/>
+      <ProgressLineChart/>
+      <ContributionBarChart/>
     </div>
-  </>);
+  </Layout>);
 }

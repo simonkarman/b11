@@ -1,10 +1,10 @@
 "use client";
 
-import { Card } from '@/components/card';
+import { capitalize, Card } from '@/components/card';
 import { colors, Day, Person } from '@/components/utils/data-downloader';
-import { Granularity, granularityToDateTimeUnit, granularityToFormat, useSelectedData } from '@/components/utils/data-selector';
+import { Granularity, granularityToDateTimeUnit, useSelectedData } from '@/components/utils/data-selector';
 import { DateTime } from 'luxon';
-import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 function getAccumulatedData(days: Day[], granularity: Granularity, people: Person[]) {
   const groups: Record<string, Record<Person, { count: number, acc: number }>> = {};
@@ -49,44 +49,43 @@ export const ProgressLineChart = () => {
     domainEnd,
   ];
   const labelFormatter = (v: number) => DateTime.fromMillis(v).toISODate()!;
-  return <Card title={'Progress'} description={`Line chart showing the ${granularity} progress per person over time.`}>
-    <div className='max-w-xl overflow-hidden'>
-      <ResponsiveContainer aspect={16 / 9}>
-        <LineChart syncId='default' data={data}>
-          <Legend />
-          <Tooltip
-            position={{ x: 10, y: 10 }}
-            labelFormatter={v => <pre>{labelFormatter(v)}</pre>}
-            animationDuration={250}
-            animationEasing={'ease-in-out'}
-          />
-          <CartesianGrid stroke="#eee" strokeDasharray="7 5" />
-          <XAxis
-            dataKey="groupName"
-            type='number'
-            className='text-xs'
-            domain={[ domainStart, domainEnd ].map(d => d.toMillis())}
-            ticks={tickLocations.map(d => d.toMillis())}
-            interval={'preserveStartEnd'}
-            tickFormatter={labelFormatter}
-          />
-          <YAxis
-            tickCount={11}
-            minTickGap={1}
-            orientation='right'
-            domain={[0, 'dataMax']}
-            className='text-xs'
-          />
-          {people.map(name => (<Line
-            key={name}
-            type={'linear'}
-            connectNulls
-            dataKey={name}
-            stroke={colors[name].rgb}
-            dot={false}
-          />))}
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
+  return <Card isChart title={'Progress'} description={`${capitalize(granularity)} accumulative progress per person.`}>
+    <ResponsiveContainer aspect={16 / 9} maxHeight={700}>
+      <LineChart data={data}>
+        <Tooltip
+          position={{ x: 10, y: 10 }}
+          labelFormatter={v => <pre>{labelFormatter(v)}</pre>}
+          contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}
+          animationDuration={250}
+          animationEasing={'ease-in-out'}
+        />
+        <CartesianGrid stroke="#eee" strokeDasharray="7 5" />
+        <XAxis
+          dataKey="groupName"
+          type='number'
+          className='text-xs'
+          domain={[ domainStart, domainEnd ].map(d => d.toMillis())}
+          ticks={tickLocations.map(d => d.toMillis())}
+          interval={'preserveStartEnd'}
+          tickFormatter={labelFormatter}
+        />
+        <YAxis
+          tickCount={11}
+          minTickGap={1}
+          orientation='right'
+          domain={[0, 'dataMax']}
+          className='text-xs'
+          width={25}
+        />
+        {people.map(name => (<Line
+          key={name}
+          type={'linear'}
+          connectNulls
+          dataKey={name}
+          stroke={colors[name].rgb}
+          dot={false}
+        />))}
+      </LineChart>
+    </ResponsiveContainer>
   </Card>;
 }

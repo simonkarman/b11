@@ -6,6 +6,6 @@ export const Spinner = (props: { size?: 'sm' | 'md' | 'lg' }) => {
     lg: 'h-24 w-24 border-[16px]',
   };
   return (
-    <div className={`${sizeMap[size]} animate-spin rounded-full border-t-gray-500 border-gray-300`} />
+    <div className={`${sizeMap[size]} animate-spin rounded-full border-t-slate-500 border-slate-300`} />
   );
 }
