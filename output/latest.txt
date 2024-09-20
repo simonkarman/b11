@@ -983,3 +983,18 @@
 2024-09-03 rogier, raoul, robin
 2024-09-04 rogier, robin
 2024-09-05 yorick, robin, simon, raoul
+2024-09-06 thomas, simon, yorick
+2024-09-07 thomas, simon, yorick, raoul
+2024-09-08 simon, rogier, robin
+2024-09-09 rogier, yorick, simon, robin
+2024-09-10 yorick, thomas, robin
+2024-09-11 yorick, simon, robin, raoul, rogier
+2024-09-12 thomas, raoul, simon
+2024-09-13 yorick, simon, rogier, robin, raoul, thomas
+2024-09-14 rogier, raoul, simon, thomas, yorick
+2024-09-15 yorick, rogier, robin
+2024-09-16 yorick, robin, simon
+2024-09-17 rogier, simon, yorick, thomas
+2024-09-18 rogier, robin, thomas, raoul
+2024-09-19 robin, rogier
+2024-09-20 simon, yorick, robin
