@@ -22,14 +22,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </p>
     </div>
     {showFilters && <DataSelectionUi/>}
-    {/*{!showFilters &&*/}
-      <button
-        className="flex-shrink-0 text-sm text-slate-600 border bg-slate-50 border-slate-200 py-0.5 px-1 rounded hover:bg-slate-100"
-        onClick={() => setShowFilters(!showFilters)}
-      >
-        ⚙️
-      </button>
-    {/*}*/}
+    <button
+      className="flex-shrink-0 text-sm text-slate-600 border bg-slate-50 border-slate-200 py-0.5 px-1 rounded hover:bg-slate-100"
+      onClick={() => setShowFilters(!showFilters)}
+    >
+      ⚙️
+    </button>
   </header>
   <div className="flex-grow">
     <main className="container mx-auto px-2">
