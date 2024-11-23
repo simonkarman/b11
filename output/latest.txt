@@ -1026,3 +1026,33 @@
 2024-10-19 simon
 2024-10-20 simon, robin, thomas
 2024-10-21 yorick, simon, rogier, raoul, robin, thomas
+2024-10-22 raoul, rogier, simon
+2024-10-23 yorick, rogier, thomas
+2024-10-24 yorick, simon, ~rogier
+2024-10-25 raoul, yorick, robin, simon, rogier, thomas
+2024-10-26 yorick, simon, robin, thomas, rogier
+2024-10-27 yorick
+2024-10-28 yorick, rogier, robin, simon
+2024-10-29 simon, raoul, yorick, thomas
+2024-10-31 yorick, simon
+2024-11-02 rogier, yorick, simon, robin
+2024-11-03 rogier
+2024-11-04 robin, simon
+2024-11-06 yorick, simon, rogier, robin, raoul
+2024-11-07 yorick, robin, rogier
+2024-11-08 robin, rogier, ~yorick
+2024-11-09 rogier
+2024-11-10 yorick, simon, thomas, rogier
+2024-11-11 rogier, robin, yorick
+2024-11-12 rogier, simon
+2024-11-13 thomas
+2024-11-14 yorick, simon, robin, rogier, ~raoul
+2024-11-15 yorick, simon, rogier, robin, thomas
+2024-11-16 robin, thomas, rogier
+2024-11-17 simon, yorick, thomas
+2024-11-18 rogier
+2024-11-19 simon
+2024-11-20 yorick, rogier, robin
+2024-11-21 yorick, simon, rogier
+2024-11-22 yorick, rogier, simon, raoul
+2024-11-23 simon
