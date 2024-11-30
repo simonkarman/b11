@@ -34,7 +34,7 @@ export const ContributionBarChart = () => {
   const granularity = granularities[granularityIndex];
 
   const labelFormatter = (v: number) => DateTime.fromMillis(v).toFormat(granularityToFormat(granularity))!;
-  return <Card isChart title="Contribution" description={`${capitalize(granularity)} contribution per person.`}>
+  return <Card title="Contribution" description={`${capitalize(granularity)} contribution per person.`} canMagnify restrictWidth>
     <ResponsiveContainer aspect={16 / 9} maxHeight={500}>
       <BarChart data={data}>
         <Tooltip

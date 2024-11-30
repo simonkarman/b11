@@ -32,10 +32,12 @@ type SelectedData = {
   initialEndDate: string,
   endDate: string,
   setEndDate: (date: string) => void,
+  allPeople: typeof everyone,
   people: Person[],
   setPeople: (people: Person[]) => void,
   granularity: Granularity | undefined,
   setGranularity: (granularity: Granularity | undefined) => void,
+  allDays: Day[],
   days: Day[],
 };
 const SelectedDataContext = createContext<SelectedData | null>(null);
@@ -54,9 +56,11 @@ export function DataSelector(props: PropsWithChildren<{ source: Day[] }>) {
   const initialEndDate = source[source.length - 1].date;
   const [startDate, setStartDate] = useState<string>(initialStartDate);
   const [endDate, setEndDate] = useState<string>(initialEndDate);
+  const allPeople = everyone;
   const [people, setPeople] = useState<Person[]>([...everyone]);
   const [granularity, setGranularity] = useState<Granularity | undefined>(undefined);
 
+  const allDays = source;
   const days = source.filter(day => DateTime.fromISO(day.date) >= DateTime.fromISO(startDate)
                                  && DateTime.fromISO(day.date) <= DateTime.fromISO(endDate))
     .map(day => ({ ...day, people: day.people.filter(person => people.length === 0 || people.includes(person)) }));
@@ -64,9 +68,9 @@ export function DataSelector(props: PropsWithChildren<{ source: Day[] }>) {
   return <SelectedDataContext.Provider value={{
     initialStartDate, startDate, setStartDate,
     initialEndDate, endDate, setEndDate,
-    people, setPeople,
+    allPeople, people, setPeople,
     granularity, setGranularity,
-    days,
+    allDays, days,
   }}>
     {props.children}
   </SelectedDataContext.Provider>;

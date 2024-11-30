@@ -3,7 +3,12 @@ import { DataSelectionUi } from '@/components/data-selection-ui';
 
 export const capitalize = (s: string) => s[0].toUpperCase() + s.slice(1);
 
-export const Card = (props: PropsWithChildren<{ title: string, description: string, isChart?: boolean }>) => {
+export const Card = (props: PropsWithChildren<{
+  title: string,
+  description?: string,
+  canMagnify?: boolean
+  restrictWidth?: boolean
+}>) => {
   const [enlarged, setEnlarged] = useState(false);
   const backgroundRef = useRef<HTMLDivElement>(null);
 
@@ -13,17 +18,17 @@ export const Card = (props: PropsWithChildren<{ title: string, description: stri
         <p className='font-bold text-slate-900 text-lg'>
           {props.title}
         </p>
-        {props.isChart &&
+        {props.canMagnify &&
           <button className='text-xs' onClick={() => setEnlarged(true)}>
             🔎
           </button>
         }
       </div>
       <div className='flex flex-col items-center lg:items-start px-2 space-y-3'>
-        <p className='text-sm text-slate-600'>
+        {props.description && <p className='text-sm text-slate-600'>
           {props.description}
-        </p>
-        <div className={props.isChart ? 'w-full max-w-[29rem] lg:max-w-full lg:w-[29rem] xl:w-[37rem] 2xl:w-[45rem]': ''}>
+        </p>}
+        <div className={props.restrictWidth ? 'w-full max-w-[29rem] lg:max-w-full lg:w-[29rem] xl:w-[37rem] 2xl:w-[45rem]': ''}>
           {props.children}
         </div>
       </div>
