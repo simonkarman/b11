@@ -1071,3 +1071,48 @@
 2024-12-10 simon, rogier, raoul
 2024-12-11 simon, robin
 2024-12-13 rogier, thomas, yorick, simon, raoul, robin
+2024-12-14 simon
+2024-12-15 yorick, rogier, raoul
+2024-12-16 raoul, rogier
+2024-12-18 thomas, yorick
+2024-12-19 robin, yorick, simon
+2024-12-20 simon, rogier, yorick
+2024-12-21 robin, simon, thomas, yorick, raoul, rogier
+2024-12-22 rogier
+2024-12-23 simon, rogier, yorick, robin, raoul
+2024-12-24 simon, yorick, robin, thomas
+2024-12-25 raoul, robin, simon, thomas
+2024-12-26 yorick, thomas
+2024-12-27 yorick, simon, thomas
+2024-12-28 raoul, simon, yorick, robin
+2024-12-30 thomas, raoul, simon, robin
+2024-12-31 raoul, rogier
+2025-01-01 rogier, robin
+2025-01-02 rogier, simon
+2025-01-04 yorick, rogier, raoul
+2025-01-05 raoul, robin
+2025-01-06 simon, rogier, robin
+2025-01-07 thomas, yorick
+2025-01-08 yorick, rogier
+2025-01-09 rogier
+2025-01-10 simon, robin, raoul, yorick, thomas
+2025-01-11 rogier, yorick, robin, simon
+2025-01-12 thomas, rogier, simon
+2025-01-13 yorick
+2025-01-15 yorick, simon, rogier, ~raoul
+2025-01-16 simon, raoul, rogier, thomas, yorick
+2025-01-17 yorick
+2025-01-18 thomas
+2025-01-19 raoul, robin, simon
+2025-01-20 yorick, simon, robin
+2025-01-21 robin
+2025-01-22 yorick, rogier, simon, thomas
+2025-01-23 simon
+2025-01-24 yorick, robin, rogier
+2025-01-25 rogier
+2025-01-26 thomas, raoul, rogier
+2025-01-27 simon, rogier, yorick
+2025-01-28 rogier, simon, robin, yorick, raoul
+2025-01-29 yorick
+2025-01-30 simon, rogier, yorick
+2025-01-31 robin, raoul, rogier, yorick

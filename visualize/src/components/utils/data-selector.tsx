@@ -54,7 +54,8 @@ export function DataSelector(props: PropsWithChildren<{ source: Day[] }>) {
   const { source } = props;
   const initialStartDate = source[0].date;
   const initialEndDate = source[source.length - 1].date;
-  const [startDate, setStartDate] = useState<string>(initialStartDate);
+  const lastDay = DateTime.fromISO(initialEndDate) as DateTime<true>;
+  const [startDate, setStartDate] = useState<string>(lastDay.startOf('year').toISODate());
   const [endDate, setEndDate] = useState<string>(initialEndDate);
   const allPeople = everyone;
   const [people, setPeople] = useState<Person[]>([...everyone]);
