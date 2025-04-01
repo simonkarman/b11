@@ -1116,3 +1116,58 @@
 2025-01-29 yorick
 2025-01-30 simon, rogier, yorick
 2025-01-31 robin, raoul, rogier, yorick
+2025-02-01 simon, rogier
+2025-02-02 robin, ~simon, ~raoul
+2025-02-03 rogier, yorick, raoul
+2025-02-04 simon, yorick, raoul, thomas
+2025-02-05 robin, thomas, rogier, simon, yorick
+2025-02-06 yorick, rogier
+2025-02-09 simon, robin
+2025-02-10 rogier, thomas
+2025-02-11 rogier, yorick
+2025-02-12 robin, rogier, thomas, yorick, simon
+2025-02-13 raoul, simon
+2025-02-14 rogier, thomas
+2025-02-15 ~simon
+2025-02-16 thomas, rogier, yorick
+2025-02-17 robin, simon
+2025-02-19 rogier, simon, raoul
+2025-02-20 simon
+2025-02-21 simon, rogier, raoul
+2025-02-22 rogier, simon, raoul
+2025-02-23 rogier, simon, yorick, raoul
+2025-02-24 simon, rogier, yorick, thomas
+2025-02-25 thomas, simon
+2025-02-26 yorick
+2025-02-27 simon
+2025-02-28 simon, rogier
+2025-03-01 rogier, simon
+2025-03-02 yorick, rogier
+2025-03-04 simon, yorick
+2025-03-05 rogier
+2025-03-06 yorick, rogier, simon
+2025-03-07 yorick, thomas
+2025-03-08 rogier, simon
+2025-03-09 simon, thomas, robin, rogier
+2025-03-10 thomas, rogier, raoul, simon
+2025-03-11 yorick, rogier, simon
+2025-03-12 robin, rogier
+2025-03-13 raoul, robin, ~simon
+2025-03-14 simon
+2025-03-16 simon, robin
+2025-03-17 rogier, robin, thomas, yorick
+2025-03-18 rogier
+2025-03-19 yorick, rogier, raoul, simon
+2025-03-20 rogier, simon, yorick
+2025-03-21 simon, yorick, rogier
+2025-03-22 simon, raoul
+2025-03-23 yorick, simon, rogier
+2025-03-24 simon, yorick, robin
+2025-03-25 simon, rogier
+2025-03-26 simon
+2025-03-27 raoul, simon
+2025-03-28 rogier, robin
+2025-03-29 raoul, rogier, simon, yorick
+2025-03-30 yorick, thomas, robin
+2025-03-31 rogier, simon, robin
+2025-04-01 robin, simon, rogier
