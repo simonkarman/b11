@@ -21,7 +21,7 @@ const txtParser = (filename: string, regex: RegExp, dateFormat: string): Message
       author: match[2].split(' ')[0].toLowerCase().replace('pablo', 'raoul') as Author,
       timestamp: DateTime.fromFormat(match[1], dateFormat).toISO() || 'none',
       text: match[3],
-    })
+    });
   }
   return messages;
 }
@@ -51,6 +51,10 @@ const parsers: { [extension: string]: Parser | undefined } = {
   '.en.txt': (filename) => {
     const regex = /^(\d\d\/\d\d\/\d\d\d\d, \d\d:\d\d) - ([^:]+): ?((?:(?!\d\d\/\d\d\/\d\d\d\d, \d\d:\d\d - (.+):)(?:.|\n))*)$/gm;
     return txtParser(filename, regex, 'dd/MM/yyyy, HH:mm');
+  },
+  '.en2.txt': (filename) => {
+    const regex = /^(\d{1,2}\/\d{1,2}\/\d\d, \d\d:\d\d) - ([^:]+): (.*)$/gm;
+    return txtParser(filename, regex, 'M/d/yy, HH:mm');
   },
 };
 
@@ -155,8 +159,8 @@ const program = (filenames: string[]): void => {
     const negativeStreaks: Streaks = {};
     let currentPositiveStreak = 0;
     let currentNegativeStreak = 0;
-    let currentDate = DateTime.fromFormat(days[0].date, 'yyyy-MM-dd');
-    const lastDate = DateTime.fromFormat(days[days.length - 1].date, 'yyyy-MM-dd');
+    let currentDate = DateTime.fromFormat(days.length > 0 ? days[0].date : '2011-11-11', 'yyyy-MM-dd');
+    const lastDate = DateTime.fromFormat(days.length > 0 ? days[days.length - 1].date : '2011-11-11', 'yyyy-MM-dd');
     while (currentDate <= lastDate) {
       currentDate = currentDate.plus({ day: 1 });
       const hasPosted = analytics[currentDate.toISODate()!]?.get(author) === true;
