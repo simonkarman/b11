@@ -1287,7 +1287,7 @@
 2025-08-07 robin, simon, rogier, yorick
 2025-08-08 simon, rogier, thomas, robin
 2025-08-09 robin, yorick
-2025-08-11 raoul, rogier, yorick, simon
+2025-08-11 raoul, rogier, yorick, ~simon
 2025-08-12 yorick, simon, rogier
 2025-08-13 robin, yorick, raoul
 2025-08-15 robin, rogier, thomas
@@ -1297,7 +1297,7 @@
 2025-08-20 simon, raoul, thomas, robin
 2025-08-21 simon, yorick, robin
 2025-08-22 robin, thomas, raoul, rogier
-2025-08-23 robin, raoul, rogier, yorick, simon
+2025-08-23 robin, raoul, rogier, yorick, ~simon
 2025-08-25 simon, yorick, rogier, robin, thomas
 2025-08-26 raoul, robin, rogier, simon, thomas
 2025-08-28 robin
@@ -1305,7 +1305,7 @@
 2025-08-30 raoul, simon, rogier, robin
 2025-08-31 thomas, rogier, raoul, yorick
 2025-09-01 simon, yorick, raoul
-2025-09-03 yorick, rogier, robin, simon
+2025-09-03 yorick, rogier, robin, ~simon
 2025-09-06 simon, yorick
 2025-09-07 rogier, ~robin
 2025-09-08 rogier, yorick
@@ -1321,7 +1321,7 @@
 2025-09-18 simon, rogier
 2025-09-19 yorick
 2025-09-20 robin, rogier, simon
-2025-09-21 robin, rogier, yorick, simon
+2025-09-21 robin, rogier, yorick, ~simon
 2025-09-22 robin, thomas, simon, raoul, rogier
 2025-09-23 simon, robin, yorick, raoul
 2025-09-24 simon, robin
@@ -1360,3 +1360,94 @@
 2025-10-30 robin, rogier
 2025-10-31 raoul, yorick, rogier, robin, simon
 2025-11-01 robin, simon, yorick
+2025-11-02 simon, robin, thomas
+2025-11-03 robin
+2025-11-04 rogier
+2025-11-05 robin, rogier
+2025-11-06 simon, robin, rogier
+2025-11-07 simon, rogier
+2025-11-08 rogier, robin, simon
+2025-11-09 simon, raoul
+2025-11-10 simon, raoul, robin
+2025-11-11 raoul, simon, yorick, rogier, thomas
+2025-11-12 simon
+2025-11-13 simon
+2025-11-14 robin, yorick, rogier, raoul
+2025-11-15 yorick, simon
+2025-11-17 simon, thomas, robin
+2025-11-18 rogier
+2025-11-19 simon, rogier
+2025-11-20 rogier, yorick, simon
+2025-11-21 yorick, simon, rogier
+2025-11-22 robin
+2025-11-24 simon
+2025-11-25 rogier, raoul, thomas, robin
+2025-11-26 yorick, robin, rogier
+2025-11-27 simon, yorick
+2025-11-28 rogier, thomas, raoul
+2025-11-29 rogier, simon, robin
+2025-12-01 simon
+2025-12-02 simon, robin, rogier, raoul
+2025-12-03 simon, rogier
+2025-12-04 robin, raoul
+2025-12-05 simon, thomas, rogier, raoul, robin
+2025-12-06 simon, robin
+2025-12-07 robin, simon
+2025-12-08 rogier
+2025-12-09 rogier, robin, raoul
+2025-12-11 yorick, simon, robin
+2025-12-12 rogier
+2025-12-13 ~simon, ~raoul
+2025-12-14 yorick, rogier, simon, robin
+2025-12-15 simon
+2025-12-16 robin, simon, yorick
+2025-12-17 rogier, raoul
+2025-12-20 simon
+2025-12-21 yorick, thomas
+2025-12-22 rogier, raoul, simon, ~yorick
+2025-12-24 rogier, yorick, thomas
+2025-12-25 yorick, simon, thomas, robin, rogier
+2025-12-27 rogier, raoul, robin
+2025-12-28 yorick, simon
+2025-12-29 simon, robin, yorick
+2025-12-31 simon, raoul, robin
+2026-01-02 robin, rogier, simon
+2026-01-03 simon, robin, rogier
+2026-01-04 rogier, robin, yorick
+2026-01-05 robin, simon, raoul
+2026-01-07 thomas, yorick, simon
+2026-01-08 simon, rogier, robin
+2026-01-09 simon, raoul
+2026-01-10 simon, rogier, raoul, robin, thomas, yorick
+2026-01-11 simon, robin
+2026-01-12 rogier
+2026-01-13 robin, simon
+2026-01-15 robin, rogier, raoul, simon
+2026-01-16 simon, yorick
+2026-01-17 rogier, simon, yorick
+2026-01-18 rogier, raoul, robin
+2026-01-19 simon, rogier, thomas
+2026-01-20 simon, robin, thomas
+2026-01-22 rogier, simon, yorick, raoul
+2026-01-23 rogier, raoul, simon
+2026-01-24 raoul, yorick, robin
+2026-01-25 rogier, robin
+2026-01-26 yorick, raoul, ~simon
+2026-01-27 simon, robin
+2026-01-28 simon, raoul
+2026-01-30 rogier
+2026-02-01 rogier, simon
+2026-02-02 simon, yorick, robin, rogier
+2026-02-03 rogier, yorick
+2026-02-04 robin, rogier
+2026-02-05 thomas, robin
+2026-02-06 yorick, rogier
+2026-02-07 robin, rogier
+2026-02-09 simon, robin, yorick
+2026-02-10 robin, raoul, rogier
+2026-02-11 robin, raoul, rogier, yorick
+2026-02-12 simon, rogier, robin
+2026-02-13 robin, rogier
+2026-02-14 thomas, simon, yorick
+2026-02-15 yorick, rogier, raoul
+2026-02-16 simon, thomas, raoul
