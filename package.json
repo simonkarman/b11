@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Analyze and view b11 posts on 11:11",
   "scripts": {
-    "auto-analyze": "npm --prefix auto-fetcher start && npm run analyze",
     "analyze": "ts-node index.ts"
   },
   "author": "Simon Karman",
