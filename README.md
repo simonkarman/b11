@@ -36,3 +36,21 @@ npm --prefix visualize dev
 You can now view the visualization on [localhost:3000](http://localhost:3000).
 
 More information can be found in the [README.md](visualize/README.md) in the `visualize/` directory.
+
+## Auto run
+To automatically fetch and run the analysis you can use the `./auto.sh` script. This script will fetch the latest data, run the analysis, and push the changes to the repository.
+
+```bash
+# (optional)
+brew install terminal-notifier
+
+# run the script
+./auto.sh
+```
+
+You can also run the analysis and visualization automatically every day at 11:13 on your MacBook using crontab.
+
+```bash
+# set using `crontab -e`
+13 11 * * * (cd /path/to/project/b11 && HOME=/Users/<your-name> ./auto.sh) >> /path/to/project/b11/auto.log 2>&1
+```
