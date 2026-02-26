@@ -36,4 +36,9 @@ git reset .
 git add output/latest.txt output/latest.json
 git commit -m "Auto run at $(date "+%Y-%m-%d")"
 git push origin main
-send_notification "B11" "Successfully analyzed 11:11 for today! Changes have been pushed to GitHub."
+
+# Notification for successful analysis and push
+additions=$(git show -U0 output/latest.txt | grep --color=never '^+\d')
+number_of_additions=$(echo "$additions" | wc -l)
+message="Successfully analyzed 11:11 for today! $number_of_additions new days have been pushed to GitHub. Latest$(echo "$additions" | tail -n 1)"
+send_notification "B11" "$message"
