@@ -38,7 +38,7 @@ client.on('auth_failure', msg => {
 // Once the client is ready, fetch messages from the specified group and save to file
 client.on('ready', async () => {
   console.log('Client ready, fetching messages...');
-  await new Promise(resolve => setTimeout(resolve, 5000));
+  await new Promise(resolve => setTimeout(resolve, 85000));
 
   const chats = await client.getChats();
   const group = chats.find(c => c.name === groupName);

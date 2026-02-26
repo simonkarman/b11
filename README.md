@@ -52,5 +52,5 @@ You can also run the analysis and visualization automatically every day at 11:13
 
 ```bash
 # set using `crontab -e`
-13 11 * * * (cd /path/to/project/b11 && HOME=/Users/<your-name> ./auto.sh) >> /path/to/project/b11/auto.log 2>&1
+11 11 * * * (cd /path/to/project/b11 && HOME=/Users/<your-name> ./auto.sh) >> /path/to/project/b11/auto.log 2>&1
 ```
