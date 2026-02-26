@@ -108,7 +108,7 @@ const program = (filenames: string[]): void => {
   const outputFilename = `output/${now.toISODate()}-${now.toISOTime({ suppressSeconds: true, includeOffset: false })!.replace(':', '-')}`;
   fs.writeFileSync(
     `${outputFilename}.txt`,
-    days.map(date => `${date.date} ${Array.from(date.authors.entries()).map(([author, exact]) => `${exact ? '' : '~'}${author}`).join(', ')}`).join('\n'),
+    days.map(date => `${date.date} ${Array.from(date.authors.entries()).map(([author, exact]) => `${exact ? '' : '~'}${author}`).join(', ')}`).join('\n') + '\n',
   );
   console.info(`- Relevant information has been written to ${outputFilename}.txt`);
 
@@ -198,7 +198,7 @@ const program = (filenames: string[]): void => {
   authors.forEach(author => reports[author] = generateReportFor(author));
   fs.writeFileSync(
     `${outputFilename}.json`,
-    JSON.stringify(reports, undefined, 2),
+    JSON.stringify(reports, undefined, 2) + '\n',
   );
 
   // Copy files to latest files
