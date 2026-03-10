@@ -19,7 +19,7 @@ export type Day = {
 export async function DataDownloader(props: PropsWithChildren) {
   const dataUrl = 'https://raw.githubusercontent.com/simonkarman/b11/main/output/latest.txt';
   const raw = await fetch(dataUrl, { cache: 'no-store' }).then(response => response.text());
-  const data: Day[] = raw.split('\n').map((line, lineIndex) => {
+  const data: Day[] = raw.trim().split('\n').map((line, lineIndex) => {
     const [date, ...people] = line
       .split(' ')
       .filter(name => !name.startsWith('~'))
