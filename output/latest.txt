@@ -1471,3 +1471,10 @@
 2026-03-07 simon
 2026-03-09 robin
 2026-03-10 rogier, robin, raoul, yorick
+2026-03-11 robin, yorick
+2026-03-12 robin
+2026-03-13 robin, raoul, yorick
+2026-03-14 robin, rogier
+2026-03-15 rogier
+2026-03-16 thomas, simon, raoul, rogier
+2026-03-17 robin, rogier
