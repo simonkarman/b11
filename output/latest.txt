@@ -1483,3 +1483,7 @@
 2026-03-22 yorick, ~rogier
 2026-03-23 raoul, robin, rogier
 2026-03-24 yorick, simon, robin
+2026-03-25 robin, yorick, rogier
+2026-03-27 robin, rogier, simon, yorick
+2026-03-28 robin, rogier, yorick
+2026-03-29 robin
