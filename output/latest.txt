@@ -1500,3 +1500,7 @@
 2026-04-19 robin, yorick
 2026-04-20 simon, robin, rogier, yorick
 2026-04-21 yorick, rogier
+2026-04-22 robin, rogier
+2026-04-23 robin, rogier, simon
+2026-04-24 yorick
+2026-04-25 rogier, raoul, robin
