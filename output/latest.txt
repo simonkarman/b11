@@ -3,7 +3,7 @@
 2016-08-20 ~simon
 2016-09-01 raoul, simon
 2016-09-03 thomas
-2017-03-30 thomas
+2017-03-30 ~thomas
 2018-01-18 thomas
 2018-05-01 thomas
 2018-05-20 rogier
@@ -177,7 +177,7 @@
 2021-09-20 rogier
 2021-09-21 rogier
 2021-09-23 raoul
-2021-09-25 ~robin, rogier
+2021-09-25 robin, rogier
 2021-09-26 ~simon
 2021-09-28 yorick
 2021-09-30 simon, raoul
@@ -201,7 +201,7 @@
 2021-10-25 rogier, robin
 2021-10-26 rogier, robin
 2021-10-27 raoul, rogier
-2021-10-28 rogier
+2021-10-28 ~rogier
 2021-10-29 thomas, robin
 2021-10-30 thomas, robin, raoul, simon
 2021-11-01 simon, rogier, raoul
@@ -216,7 +216,7 @@
 2021-11-12 ~simon, rogier, yorick
 2021-11-13 raoul, robin
 2021-11-16 thomas, rogier, simon, yorick, raoul, robin
-2021-11-17 ~raoul, rogier, robin, thomas
+2021-11-17 raoul, rogier, robin, thomas
 2021-11-18 simon, thomas, rogier
 2021-11-20 rogier, raoul
 2021-11-21 robin
@@ -293,7 +293,7 @@
 2022-03-01 rogier, thomas, robin
 2022-03-02 simon, thomas
 2022-03-03 ~simon, rogier, robin, thomas
-2022-03-04 ~yorick, robin
+2022-03-04 yorick, robin
 2022-03-06 simon
 2022-03-07 simon
 2022-03-08 rogier
@@ -339,7 +339,7 @@
 2022-05-08 simon
 2022-05-09 rogier, raoul, robin
 2022-05-10 simon, rogier, robin
-2022-05-11 raoul, ~robin
+2022-05-11 ~raoul, ~robin
 2022-05-13 raoul, rogier, robin, simon
 2022-05-15 rogier
 2022-05-17 simon, rogier, robin
@@ -366,7 +366,7 @@
 2022-06-23 yorick, raoul, simon
 2022-06-24 rogier, robin
 2022-06-25 robin, raoul, simon
-2022-06-27 ~yorick, rogier, robin
+2022-06-27 yorick, rogier, robin
 2022-06-28 yorick, thomas, rogier, raoul, robin
 2022-06-29 rogier, yorick
 2022-06-30 rogier, raoul, thomas, yorick
@@ -450,7 +450,7 @@
 2022-10-06 yorick
 2022-10-07 thomas
 2022-10-09 rogier, raoul
-2022-10-10 ~robin, simon
+2022-10-10 robin, simon
 2022-10-11 raoul, thomas, simon, robin
 2022-10-12 robin, rogier
 2022-10-13 rogier, thomas, yorick
@@ -480,7 +480,7 @@
 2022-11-15 rogier, raoul, robin, yorick
 2022-11-16 ~simon, yorick
 2022-11-17 rogier, raoul, simon, yorick
-2022-11-18 ~rogier, raoul, ~yorick, simon
+2022-11-18 ~rogier, ~raoul, ~yorick, simon
 2022-11-19 rogier, raoul
 2022-11-20 rogier, robin, raoul, simon
 2022-11-21 raoul, robin, ~yorick
@@ -522,7 +522,7 @@
 2023-01-11 raoul, rogier
 2023-01-12 rogier, robin, raoul, ~simon
 2023-01-14 simon, rogier, robin, thomas
-2023-01-16 simon, thomas, raoul, yorick
+2023-01-16 simon, thomas, raoul, ~yorick
 2023-01-18 rogier, simon, raoul, robin
 2023-01-19 rogier, robin, raoul
 2023-01-20 simon, rogier, thomas
@@ -533,7 +533,7 @@
 2023-01-25 simon, raoul
 2023-01-26 robin, simon
 2023-01-27 raoul
-2023-01-28 rogier, yorick
+2023-01-28 rogier, ~yorick
 2023-01-30 yorick, simon, raoul, rogier
 2023-01-31 yorick, rogier, simon
 2023-02-01 simon, robin, rogier
@@ -644,7 +644,7 @@
 2023-06-18 thomas, raoul
 2023-06-19 simon, yorick, robin, rogier, raoul
 2023-06-20 robin, yorick, rogier
-2023-06-23 ~rogier, robin, thomas
+2023-06-23 rogier, robin, thomas
 2023-06-24 yorick, rogier, robin
 2023-06-25 rogier
 2023-06-26 simon, yorick, rogier
@@ -688,7 +688,7 @@
 2023-08-24 raoul, robin, yorick
 2023-08-26 robin
 2023-08-27 simon
-2023-08-28 simon, robin, thomas, yorick, raoul
+2023-08-28 simon, robin, thomas, yorick, ~raoul
 2023-08-29 simon, yorick, robin, rogier
 2023-08-30 rogier, simon, yorick, thomas
 2023-08-31 simon, yorick
@@ -733,7 +733,7 @@
 2023-10-21 robin
 2023-10-22 yorick
 2023-10-23 simon, rogier, robin
-2023-10-24 ~robin, simon, yorick
+2023-10-24 robin, simon, yorick
 2023-10-25 robin, rogier, raoul
 2023-10-26 rogier, yorick, thomas, robin
 2023-10-27 raoul, rogier, simon, robin, yorick
@@ -759,7 +759,7 @@
 2023-11-20 rogier, simon, thomas, robin, raoul, yorick
 2023-11-21 thomas, simon, raoul
 2023-11-22 raoul, rogier, robin
-2023-11-23 ~yorick
+2023-11-23 yorick
 2023-11-25 rogier, thomas, yorick
 2023-11-26 raoul, yorick, simon, robin, thomas
 2023-11-27 yorick, simon, raoul, thomas
@@ -768,7 +768,7 @@
 2023-12-01 robin, raoul, simon, rogier, yorick
 2023-12-04 thomas, rogier, yorick, raoul
 2023-12-05 thomas, yorick
-2023-12-06 ~robin, yorick, raoul, simon, rogier
+2023-12-06 robin, yorick, raoul, simon, rogier
 2023-12-07 rogier, thomas, yorick, robin
 2023-12-08 thomas, robin
 2023-12-09 yorick, simon
@@ -791,7 +791,7 @@
 2023-12-26 rogier, yorick, robin, thomas
 2023-12-27 rogier, yorick, simon, thomas
 2023-12-28 rogier, robin
-2023-12-29 ~robin, rogier, raoul
+2023-12-29 robin, rogier, raoul
 2023-12-30 yorick, robin
 2023-12-31 raoul, simon, robin, thomas, yorick
 2024-01-02 robin, rogier
@@ -802,13 +802,13 @@
 2024-01-07 rogier, robin, simon, raoul, thomas
 2024-01-08 yorick
 2024-01-10 simon, raoul, rogier
-2024-01-12 ~robin, thomas, yorick, rogier, raoul
+2024-01-12 robin, thomas, yorick, rogier, raoul
 2024-01-13 robin, yorick, thomas
 2024-01-14 robin, simon, yorick, rogier, raoul
 2024-01-17 raoul, rogier, yorick
 2024-01-18 rogier, robin
 2024-01-21 yorick, robin
-2024-01-22 ~robin, yorick, thomas, raoul
+2024-01-22 robin, yorick, thomas, raoul
 2024-01-23 rogier, thomas, simon, raoul
 2024-01-25 simon, raoul, thomas
 2024-01-26 rogier, raoul
@@ -830,7 +830,7 @@
 2024-02-15 rogier, raoul
 2024-02-16 raoul, rogier
 2024-02-17 raoul, robin, thomas
-2024-02-19 rogier, simon, robin
+2024-02-19 rogier, simon, ~robin
 2024-02-20 simon, raoul, rogier
 2024-02-22 simon, robin, raoul
 2024-02-24 rogier, yorick, robin
@@ -870,7 +870,7 @@
 2024-04-25 thomas, robin
 2024-04-26 simon, rogier
 2024-04-28 thomas, simon, raoul, rogier
-2024-04-30 thomas, rogier
+2024-04-30 thomas, ~rogier
 2024-05-01 yorick, simon, rogier
 2024-05-03 simon, robin, ~raoul
 2024-05-04 robin, raoul
@@ -898,7 +898,7 @@
 2024-06-02 yorick, rogier, simon
 2024-06-05 simon, rogier, robin, yorick
 2024-06-06 rogier, yorick
-2024-06-07 ~raoul, rogier, robin, simon
+2024-06-07 raoul, rogier, robin, simon
 2024-06-08 rogier, raoul
 2024-06-09 robin, raoul, simon
 2024-06-11 rogier, yorick
@@ -928,7 +928,7 @@
 2024-07-08 robin, simon, rogier, thomas, raoul
 2024-07-09 thomas, rogier, robin
 2024-07-10 robin, yorick, rogier, simon
-2024-07-11 simon, rogier
+2024-07-11 simon, ~rogier
 2024-07-12 rogier, thomas, robin
 2024-07-13 yorick, simon, rogier, thomas
 2024-07-14 rogier, thomas, yorick, simon
@@ -1046,7 +1046,7 @@
 2024-11-11 rogier, robin, yorick
 2024-11-12 rogier, simon
 2024-11-13 thomas
-2024-11-14 yorick, simon, robin, rogier, raoul
+2024-11-14 yorick, simon, robin, rogier, ~raoul
 2024-11-15 yorick, simon, rogier, robin, thomas
 2024-11-16 robin, thomas, rogier
 2024-11-17 simon, yorick, thomas
@@ -1080,7 +1080,7 @@
 2024-12-21 robin, simon, thomas, yorick, raoul, rogier
 2024-12-22 rogier
 2024-12-23 simon, rogier, yorick, robin, raoul
-2024-12-24 simon, yorick, robin, thomas
+2024-12-24 simon, yorick, robin, ~thomas
 2024-12-25 raoul, robin, simon, thomas
 2024-12-26 yorick, thomas
 2024-12-27 yorick, simon, thomas
@@ -1110,7 +1110,7 @@
 2025-01-23 simon
 2025-01-24 yorick, robin, rogier
 2025-01-25 rogier
-2025-01-26 thomas, raoul, rogier
+2025-01-26 thomas, ~raoul, ~rogier
 2025-01-27 simon, rogier, yorick
 2025-01-28 rogier, simon, robin, yorick, raoul
 2025-01-29 yorick
@@ -1215,7 +1215,7 @@
 2025-05-21 simon, raoul, rogier
 2025-05-22 simon
 2025-05-24 robin, raoul, simon
-2025-05-25 rogier, robin, raoul
+2025-05-25 rogier, robin, ~raoul
 2025-05-26 simon
 2025-05-27 simon
 2025-05-28 simon, yorick
@@ -1237,7 +1237,7 @@
 2025-06-14 yorick, rogier, robin, simon
 2025-06-15 yorick, simon, robin
 2025-06-16 rogier, simon
-2025-06-17 ~yorick, raoul, ~simon
+2025-06-17 yorick, raoul, ~simon
 2025-06-18 rogier, simon, robin
 2025-06-19 rogier, raoul
 2025-06-20 robin, yorick
@@ -1265,7 +1265,7 @@
 2025-07-14 simon, rogier, raoul
 2025-07-15 ~rogier
 2025-07-16 raoul, robin, ~simon
-2025-07-17 ~raoul, yorick, ~robin
+2025-07-17 ~raoul, ~yorick, ~robin
 2025-07-18 yorick
 2025-07-19 simon
 2025-07-20 robin
@@ -1317,7 +1317,7 @@
 2025-09-14 simon, thomas, robin, rogier
 2025-09-15 raoul, simon, robin
 2025-09-16 raoul, rogier
-2025-09-17 simon, rogier, robin
+2025-09-17 simon, ~rogier, ~robin
 2025-09-18 simon, rogier
 2025-09-19 yorick
 2025-09-20 robin, rogier, simon
@@ -1333,7 +1333,7 @@
 2025-10-01 simon, raoul
 2025-10-02 rogier, yorick, robin, thomas
 2025-10-03 yorick, robin, raoul
-2025-10-04 rogier, simon, robin, raoul
+2025-10-04 rogier, simon, robin, ~raoul
 2025-10-05 rogier, simon, robin
 2025-10-06 yorick, robin, raoul, thomas, rogier
 2025-10-07 rogier, robin, simon, thomas
@@ -1391,7 +1391,7 @@
 2025-12-03 simon, rogier
 2025-12-04 robin, raoul
 2025-12-05 simon, thomas, rogier, raoul, robin
-2025-12-06 simon, robin
+2025-12-06 simon, ~robin
 2025-12-07 robin, simon
 2025-12-08 rogier
 2025-12-09 rogier, robin, raoul
@@ -1428,9 +1428,9 @@
 2026-01-18 rogier, raoul, robin
 2026-01-19 simon, rogier, thomas
 2026-01-20 simon, robin, thomas
-2026-01-22 rogier, simon, yorick, raoul
+2026-01-22 rogier, simon, yorick, ~raoul
 2026-01-23 rogier, raoul, simon
-2026-01-24 raoul, yorick, robin
+2026-01-24 raoul, yorick, ~robin
 2026-01-25 rogier, robin
 2026-01-26 yorick, raoul, ~simon
 2026-01-27 simon, robin
@@ -1465,7 +1465,7 @@
 2026-03-01 rogier, robin
 2026-03-02 rogier
 2026-03-03 rogier, simon
-2026-03-04 robin, yorick, rogier
+2026-03-04 robin, yorick, rogier, simon
 2026-03-05 robin, yorick
 2026-03-06 simon, rogier, robin
 2026-03-07 simon
@@ -1489,13 +1489,21 @@
 2026-03-29 robin
 2026-03-30 rogier, simon
 2026-03-31 simon
+2026-04-01 rogier, robin, thomas
+2026-04-03 ~rogier
+2026-04-05 simon, robin, rogier, yorick
+2026-04-06 simon, yorick
+2026-04-07 rogier, robin
+2026-04-08 ~rogier
+2026-04-09 rogier, yorick, raoul, robin
+2026-04-10 simon, robin
 2026-04-11 robin, simon, raoul
 2026-04-12 raoul
 2026-04-13 robin, rogier, yorick
 2026-04-14 simon
 2026-04-15 robin, rogier
 2026-04-16 rogier, raoul, robin
-2026-04-17 yorick, robin
+2026-04-17 yorick, robin, simon
 2026-04-18 simon
 2026-04-19 robin, yorick
 2026-04-20 simon, robin, rogier, yorick
