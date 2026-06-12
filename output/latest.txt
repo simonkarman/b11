@@ -26,7 +26,6 @@
 2019-04-06 thomas
 2019-04-26 simon
 2019-05-27 thomas
-2019-05-31 simon
 2019-06-06 simon
 2019-06-12 simon, raoul
 2019-06-23 simon
@@ -189,8 +188,7 @@
 2021-10-08 rogier, yorick
 2021-10-09 yorick, rogier
 2021-10-10 rogier, robin, raoul
-2021-10-11 ~yorick, raoul
-2021-10-12 raoul
+2021-10-11 ~yorick
 2021-10-13 yorick, raoul
 2021-10-15 rogier, yorick
 2021-10-16 robin, simon, yorick
@@ -259,7 +257,7 @@
 2022-01-07 rogier, yorick, simon, thomas
 2022-01-09 robin
 2022-01-10 rogier, raoul
-2022-01-11 rogier, simon
+2022-01-11 rogier, simon, ~yorick
 2022-01-14 simon, yorick, thomas, robin
 2022-01-15 rogier
 2022-01-18 ~raoul
@@ -328,7 +326,7 @@
 2022-04-19 simon, raoul
 2022-04-20 yorick, raoul
 2022-04-24 raoul, simon, robin
-2022-04-25 rogier, raoul
+2022-04-25 rogier
 2022-04-27 yorick, robin
 2022-04-30 ~simon
 2022-05-01 ~robin, simon
@@ -360,7 +358,7 @@
 2022-06-08 rogier
 2022-06-11 raoul, yorick
 2022-06-13 yorick, robin
-2022-06-15 raoul, rogier, robin
+2022-06-15 raoul, rogier, robin, yorick
 2022-06-16 rogier, raoul, robin
 2022-06-17 raoul
 2022-06-18 rogier, raoul, robin
