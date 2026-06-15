@@ -1528,3 +1528,4 @@
 2026-06-11 simon
 2026-06-12 yorick, robin, raoul
 2026-06-14 thomas, robin
+2026-06-15 rogier, robin
