@@ -12,6 +12,7 @@ const idToNameMapping: Record<string, string> = {
   '184052384571487@lid': 'Yorick van Zweeden',
   '12575731372246@lid': 'Robin Sikkens',
   '204921546747945@lid': 'Simon Karman',
+  '204921546747945:26@lid': 'Simon Karman',
   '234870404059155@lid': 'Rogier Simons',
 }
 
