@@ -1565,3 +1565,7 @@
 2026-06-20 raoul, robin
 2026-06-22 simon, raoul, yorick, thomas
 2026-06-23 rogier, simon, robin
+2026-06-24 simon, ~yorick
+2026-06-25 simon, raoul, rogier, ~robin
+2026-06-26 robin, simon
+2026-06-27 ~thomas
