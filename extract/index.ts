@@ -1,8 +1,11 @@
 import fs from 'fs';
+import path from 'path';
 import { DateTime } from 'luxon';
 import { parse } from 'csv-parse/sync';
 
-const BASE_DATA_PATH = process.env.BASE_DATA_PATH || './data/';
+const ROOT_PATH = path.resolve(__dirname, '..');
+const BASE_DATA_PATH = path.resolve(process.env.BASE_DATA_PATH || path.join(ROOT_PATH, 'data'));
+const OUTPUT_PATH = path.resolve(process.env.OUTPUT_PATH || path.join(ROOT_PATH, 'output'));
 
 type Author = 'raoul' | 'thomas' | 'yorick' | 'robin' | 'simon' | 'rogier' | 'unknown';
 type Message = {
@@ -13,7 +16,7 @@ type Message = {
 
 type Parser = (filename: string) => Message[];
 const txtParser = (filename: string, regex: RegExp, dateFormat: string): Message[] => {
-  const matches = fs.readFileSync(BASE_DATA_PATH + filename).toString().matchAll(regex);
+  const matches = fs.readFileSync(path.join(BASE_DATA_PATH, filename)).toString().matchAll(regex);
   const messages: Message[] = [];
   for (const match of matches) {
     messages.push({
@@ -35,7 +38,7 @@ const parsers: { [extension: string]: Parser | undefined } = {
       ['292', 'rogier'],
     ]);
     return parse(
-      fs.readFileSync(BASE_DATA_PATH + filename).toString(),
+      fs.readFileSync(path.join(BASE_DATA_PATH, filename)).toString(),
       { columns: true, delimiter: ';', skip_empty_lines: true }
     ).map((record: { [key: string]: string | undefined }): Message => ({
       author: authorIds.get(record.sender_jid_row_id || '') || 'unknown',
@@ -102,9 +105,9 @@ const program = (filenames: string[]): void => {
   }
   console.info('- Found', days.length, 'dates on which 11:11 was posted (by at least 1 person).');
   days.sort((a, b) => a.date.localeCompare(b.date));
-  fs.mkdirSync('output', { recursive: true });
+  fs.mkdirSync(OUTPUT_PATH, { recursive: true });
   const now = DateTime.now().startOf('minute');
-  const outputFilename = `output/${now.toISODate()}-${now.toISOTime({ suppressSeconds: true, includeOffset: false })!.replace(':', '-')}`;
+  const outputFilename = path.join(OUTPUT_PATH, `${now.toISODate()}-${now.toISOTime({ suppressSeconds: true, includeOffset: false })!.replace(':', '-')}`);
   fs.writeFileSync(
     `${outputFilename}.txt`,
     days.map(date => `${date.date} ${Array.from(date.authors.entries()).map(([author, exact]) => `${exact ? '' : '~'}${author}`).join(', ')}`).join('\n') + '\n',
@@ -112,7 +115,7 @@ const program = (filenames: string[]): void => {
   console.info(`- Relevant information has been written to ${outputFilename}.txt`);
 
   // The daily export is the single source for the web app's analysis.
-  fs.copyFileSync(`${outputFilename}.txt`, 'output/latest.txt');
+  fs.copyFileSync(`${outputFilename}.txt`, path.join(OUTPUT_PATH, 'latest.txt'));
 }
 
 program(fs.readdirSync(BASE_DATA_PATH));

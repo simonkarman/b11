@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { accumulatedContributions, countPosts, selectDays } from '../visualize/src/analysis/days';
-import { countCollaborations } from '../visualize/src/analysis/collaborations';
-import { calculateStreaks } from '../visualize/src/analysis/streaks';
-import { parseDays } from '../visualize/src/data/days';
+import { accumulatedContributions, countPosts, selectDays } from '../src/analysis/days';
+import { countCollaborations } from '../src/analysis/collaborations';
+import { calculateStreaks } from '../src/analysis/streaks';
+import { parseDays } from '../src/data/days';
 
 const days = parseDays('2024-01-01 raoul, ~simon\n2024-01-02 raoul, simon\n2024-01-04 simon\n');
 

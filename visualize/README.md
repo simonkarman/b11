@@ -8,8 +8,8 @@ The app reads `output/latest.txt` from the repository. `src/data/days.ts` parses
 ## Getting Started
 If you would like to run the visualization locally. You can run the commands.
 ```bash
-npm --prefix visualize install
-npm --prefix visualize dev
+npm install
+npm run visualize
 ```
 
 You can now view the visualization on [localhost:3000](http://localhost:3000).

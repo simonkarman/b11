@@ -3,18 +3,13 @@
   "version": "1.0.0",
   "description": "Analyze and view b11 posts on 11:11",
   "scripts": {
-    "extract": "ts-node index.ts",
-    "test:analysis": "ts-node --compiler-options '{\"target\":\"es2021\"}' tests/analysis.test.ts"
+    "postinstall": "npm --prefix extract install && npm --prefix visualize install",
+    "extract": "npm --prefix extract run extract",
+    "visualize": "npm --prefix visualize run dev",
+    "test": "npm run test:extract && npm run test:analysis",
+    "test:extract": "npm --prefix extract run test",
+    "test:analysis": "npm --prefix visualize run test:analysis"
   },
   "author": "Simon Karman",
-  "license": "ISC",
-  "dependencies": {
-    "@types/luxon": "^3.3.2",
-    "@types/node": "^20.6.3",
-    "csv-parse": "^5.5.0",
-    "luxon": "^3.4.3"
-  },
-  "devDependencies": {
-    "ts-node": "^10.9.1"
-  }
+  "license": "ISC"
 }

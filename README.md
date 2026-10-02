@@ -5,7 +5,7 @@ Analyze and view [B11](https://svsticky.nl/nl/besturen/11) posts on 11:11.
 [![Netlify Status](https://api.netlify.com/api/v1/badges/7ebdcebf-ebd5-4540-8138-ddcde2c649b0/deploy-status)](https://app.netlify.com/sites/b11-11/deploys)
 
 ## Getting started
-To view B11 posts at 11:11, provide the message exports, extract the daily records, and open the dashboard. The dashboard calculates its analytics from the daily records when you change the filters.
+To view B11 posts at 11:11, provide the message exports, extract the daily records, and open the dashboard. `extract/` and `visualize/` are separate applications; they share `output/latest.txt`. Run `npm install` at the repository root to install both applications. The root `package.json` also provides shortcuts to run and test them.
 
 > You can skip the first two steps if you want to use the latest data included in this repository.
 
@@ -16,9 +16,8 @@ Create a `data/` directory in the root of this repository and add the CSV file a
 - Expected .nl.txt format: `18-09-2020 09:55 - Simon Karman: Hoe gaat het?`
 
 ### 2. Extract
-You can run this program using npm with the following commands.
+Run the extractor from the repository root after installing dependencies:
 ```bash
-npm install
 npm run extract
 ```
 
@@ -27,11 +26,12 @@ This creates `output/latest.txt`, the single source of truth for the dashboard. 
 ### 3. Visualize
 The `visualize/` directory contains a React app that reads `latest.txt`, calculates statistics for the selected date range and people, and visualizes the results using [recharts](https://recharts.org). The app can be found at [b11-11.netlify.app](https://b11-11.netlify.app/).
 
-If you would like to run the visualization locally. You can run the commands.
+To run the visualization locally from the repository root:
 ```bash
-npm --prefix visualize install
-npm --prefix visualize dev
+npm run visualize
 ```
+
+Run both test suites with `npm test`.
 
 You can now view the visualization on [localhost:3000](http://localhost:3000).
 
