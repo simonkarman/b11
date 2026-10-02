@@ -8,7 +8,7 @@ import { useMemo } from 'react';
 export const OverallTable = () => {
   const { startDate, endDate, days, people } = useSelectedData();
   const counts = useMemo(() => countPosts(days, people), [days, people]);
-  const sortedNames = [...people].sort((a, b) => counts[b].exact - counts[a].exact);
+  const sortedNames = [...people].sort((a, b) => counts[b] - counts[a]);
   const numberOfDays = DateTime.fromISO(endDate).diff(DateTime.fromISO(startDate), 'days').days + 1;
 
   return <Card title='Overall 11:11s' description='Number of 11:11s posted per person.'>
@@ -25,10 +25,10 @@ export const OverallTable = () => {
             <tr key={name}>
               <td className="pr-2">{name[0].toUpperCase() + name.slice(1)}</td>
               <td className={`px-2 text-center text-lg font-bold ${colors[name].textClass}`}>
-                {counts[name].exact}
+                {counts[name]}
               </td>
               <td className="px-2 text-center text-md text-slate-800">
-                {(counts[name].exact / numberOfDays * 100).toFixed(1)}%
+                {(counts[name] / numberOfDays * 100).toFixed(1)}%
               </td>
             </tr>
           ))}

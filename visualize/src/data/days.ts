@@ -10,7 +10,7 @@ export const colors = {
 };
 
 export type Person = (typeof everyone)[number];
-export type Day = { date: string; people: Person[]; closePeople: Person[] };
+export type Day = { date: string; people: Person[] };
 
 export function parseDays(raw: string): Day[] {
   const lines = raw.trim().split('\n');
@@ -22,15 +22,15 @@ export function parseDays(raw: string): Day[] {
       throw new Error(`Invalid date on line ${index + 1}: ${line}`);
     }
     const people: Person[] = [];
-    const closePeople: Person[] = [];
     for (const entry of entries) {
-      const close = entry.startsWith('~');
-      const name = entry.replace(/,$/, '').replace(/^~/, '');
+      // Keep near misses in latest.txt for inspection, but omit them from the dashboard.
+      if (entry.startsWith('~')) continue;
+      const name = entry.replace(/,$/, '');
       if (!everyone.includes(name as Person)) {
         throw new Error(`Invalid name on line ${index + 1}: ${line}`);
       }
-      (close ? closePeople : people).push(name as Person);
+      people.push(name as Person);
     }
-    return { date, people, closePeople };
+    return { date, people };
   });
 }

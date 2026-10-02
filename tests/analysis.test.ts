@@ -7,13 +7,13 @@ import { parseDays } from '../visualize/src/data/days';
 
 const days = parseDays('2024-01-01 raoul, ~simon\n2024-01-02 raoul, simon\n2024-01-04 simon\n');
 
-test('parsing retains close posts and selected days retain the chosen people', () => {
-  assert.deepEqual(days[0], { date: '2024-01-01', people: ['raoul'], closePeople: ['simon'] });
+test('parsing ignores near misses and selected days retain the chosen people', () => {
+  assert.deepEqual(days[0], { date: '2024-01-01', people: ['raoul'] });
   assert.deepEqual(selectDays(days, '2024-01-02', '2024-01-04', ['simon']), [
-    { date: '2024-01-02', people: ['simon'], closePeople: [] },
-    { date: '2024-01-04', people: ['simon'], closePeople: [] },
+    { date: '2024-01-02', people: ['simon'] },
+    { date: '2024-01-04', people: ['simon'] },
   ]);
-  assert.deepEqual(countPosts(days, ['simon']).simon, { exact: 2, close: 1 });
+  assert.equal(countPosts(days, ['simon']).simon, 2);
 });
 
 test('streaks count missing dates and close posts as misses and include the end boundary', () => {

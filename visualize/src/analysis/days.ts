@@ -7,15 +7,13 @@ export function selectDays(days: Day[], startDate: string, endDate: string, peop
     .map(day => ({
       ...day,
       people: day.people.filter(person => people.length === 0 || people.includes(person)),
-      closePeople: day.closePeople.filter(person => people.length === 0 || people.includes(person)),
     }));
 }
 
 export function countPosts(days: Day[], people: Person[]) {
-  const counts = Object.fromEntries(people.map(person => [person, { exact: 0, close: 0 }])) as Record<Person, { exact: number; close: number }>;
+  const counts = Object.fromEntries(people.map(person => [person, 0])) as Record<Person, number>;
   for (const day of days) {
-    for (const person of day.people) if (counts[person]) counts[person].exact++;
-    for (const person of day.closePeople) if (counts[person]) counts[person].close++;
+    for (const person of day.people) if (person in counts) counts[person]++;
   }
   return counts;
 }

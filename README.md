@@ -22,7 +22,7 @@ npm install
 npm run extract
 ```
 
-This creates `output/latest.txt`, the single source of truth for the dashboard. Each line contains a date and the people who posted. A `~` before a name means the post was close to 11:11, but not exact. The script also writes a timestamped text snapshot in `output/`.
+This creates `output/latest.txt`, the single source of truth for the dashboard. Each line contains a date and the people who posted. A `~` before a name means the post was close to 11:11, but not exact. Those entries remain available for manual inspection, but the dashboard ignores them. The script also writes a timestamped text snapshot in `output/`.
 
 ### 3. Visualize
 The `visualize/` directory contains a React app that reads `latest.txt`, calculates statistics for the selected date range and people, and visualizes the results using [recharts](https://recharts.org). The app can be found at [b11-11.netlify.app](https://b11-11.netlify.app/).
@@ -37,20 +37,4 @@ You can now view the visualization on [localhost:3000](http://localhost:3000).
 
 More information can be found in the [README.md](visualize/README.md) in the `visualize/` directory.
 
-## Auto run
-To fetch new messages and update the extracted daily records, you can use `./auto.sh`. It fetches the latest data, runs extraction, and pushes changes to `output/latest.txt`.
-
-```bash
-# (optional)
-brew install terminal-notifier
-
-# run the script
-./auto.sh
-```
-
-You can also run the analysis and visualization automatically every day at 11:13 on your MacBook using crontab.
-
-```bash
-# set using `crontab -e`
-11 11 * * * (cd /path/to/project/b11 && HOME=/Users/<your-name> ./auto.sh) >> /path/to/project/b11/auto.log 2>&1
-```
+When you want to update the dashboard, add a new WhatsApp export to the local `data/` directory, run `npm run extract`, review the changes to `output/latest.txt`, and commit and push that file. The `data/` directory is ignored by Git and should be kept locally.
