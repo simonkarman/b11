@@ -1,8 +1,9 @@
 "use client";
 
 import { Card } from '@/components/card';
-import { colors } from '@/components/utils/data-downloader';
-import { granularityToDateTimeUnit, useSelectedData } from '@/components/utils/data-selector';
+import { granularityToDateTimeUnit } from '@/analysis/granularity';
+import { colors } from '@/data/days';
+import { useSelectedData } from '@/components/utils/data-selector';
 import { DateTime } from 'luxon';
 import { CartesianGrid, Line, LineChart as LineChart_, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 

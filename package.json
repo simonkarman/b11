@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Analyze and view b11 posts on 11:11",
   "scripts": {
-    "analyze": "ts-node index.ts"
+    "extract": "ts-node index.ts",
+    "test:analysis": "ts-node --compiler-options '{\"target\":\"es2021\"}' tests/analysis.test.ts"
   },
   "author": "Simon Karman",
   "license": "ISC",

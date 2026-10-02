@@ -1,17 +1,14 @@
 import { Card } from '@/components/card';
-import { colors, Person } from '@/components/utils/data-downloader';
+import { countPosts } from '@/analysis/days';
+import { colors } from '@/data/days';
 import { useSelectedData } from '@/components/utils/data-selector';
 import { DateTime } from 'luxon';
+import { useMemo } from 'react';
 
 export const OverallTable = () => {
   const { startDate, endDate, days, people } = useSelectedData();
-  const counts = days.reduce((acc, day) => {
-    day.people.forEach(person => {
-      acc[person] = (acc[person] || 0) + 1;
-    });
-    return acc;
-  }, {} as Record<Person, number | undefined>);
-  const sortedNames = [...people].sort((a, b) => (counts[b] ?? 0) - (counts[a] ?? 0));
+  const counts = useMemo(() => countPosts(days, people), [days, people]);
+  const sortedNames = [...people].sort((a, b) => counts[b].exact - counts[a].exact);
   const numberOfDays = DateTime.fromISO(endDate).diff(DateTime.fromISO(startDate), 'days').days + 1;
 
   return <Card title='Overall 11:11s' description='Number of 11:11s posted per person.'>
@@ -28,10 +25,10 @@ export const OverallTable = () => {
             <tr key={name}>
               <td className="pr-2">{name[0].toUpperCase() + name.slice(1)}</td>
               <td className={`px-2 text-center text-lg font-bold ${colors[name].textClass}`}>
-                {counts[name] ?? 0}
+                {counts[name].exact}
               </td>
               <td className="px-2 text-center text-md text-slate-800">
-                {((counts[name] ?? 0) / numberOfDays * 100).toFixed(1)}%
+                {(counts[name].exact / numberOfDays * 100).toFixed(1)}%
               </td>
             </tr>
           ))}

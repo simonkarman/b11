@@ -1,29 +1,10 @@
 "use client";
 
-import { Day, everyone, Person } from '@/components/utils/data-downloader';
-import { DateTime, DateTimeUnit } from 'luxon';
-import { createContext, PropsWithChildren, useContext, useState } from 'react';
-
-export const granularities = ['yearly', 'quarterly', 'monthly', 'weekly', 'daily'] as const;
-export type Granularity = typeof granularities[number];
-export const granularityToFormat = (granularity: Granularity) => {
-  return {
-    'yearly': 'yyyy',
-    'quarterly': '\'Q\'q - yyyy',
-    'monthly': 'LLL yyyy',
-    'weekly': '\'Week\' W - yyyy',
-    'daily': 'yyyy-MM-dd',
-  }[granularity];
-};
-export const granularityToDateTimeUnit = (granularity: Granularity): DateTimeUnit => {
-  switch (granularity) {
-    case 'yearly': return 'year';
-    case 'quarterly': return 'quarter';
-    case 'monthly': return 'month';
-    case 'weekly': return 'week';
-    case 'daily': return 'day';
-  }
-}
+import { selectDays } from '@/analysis/days';
+import { Granularity } from '@/analysis/granularity';
+import { Day, everyone, Person } from '@/data/days';
+import { DateTime } from 'luxon';
+import { createContext, PropsWithChildren, useContext, useMemo, useState } from 'react';
 
 type SelectedData = {
   initialStartDate: string,
@@ -62,9 +43,7 @@ export function DataSelector(props: PropsWithChildren<{ source: Day[] }>) {
   const [granularity, setGranularity] = useState<Granularity | undefined>(undefined);
 
   const allDays = source;
-  const days = source.filter(day => DateTime.fromISO(day.date) >= DateTime.fromISO(startDate)
-                                 && DateTime.fromISO(day.date) <= DateTime.fromISO(endDate))
-    .map(day => ({ ...day, people: day.people.filter(person => people.length === 0 || people.includes(person)) }));
+  const days = useMemo(() => selectDays(source, startDate, endDate, people), [source, startDate, endDate, people]);
 
   return <SelectedDataContext.Provider value={{
     initialStartDate, startDate, setStartDate,

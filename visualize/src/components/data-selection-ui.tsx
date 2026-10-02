@@ -1,5 +1,6 @@
-import { colors, everyone } from '@/components/utils/data-downloader';
-import { granularities, useSelectedData } from '@/components/utils/data-selector';
+import { granularities } from '@/analysis/granularity';
+import { colors, everyone } from '@/data/days';
+import { useSelectedData } from '@/components/utils/data-selector';
 import { DateTime } from 'luxon';
 
 export const DataSelectionUi = () => {

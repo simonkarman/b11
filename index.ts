@@ -4,7 +4,6 @@ import { parse } from 'csv-parse/sync';
 
 const BASE_DATA_PATH = process.env.BASE_DATA_PATH || './data/';
 
-const authors = ['raoul', 'thomas', 'yorick', 'robin', 'simon', 'rogier'] as const;
 type Author = 'raoul' | 'thomas' | 'yorick' | 'robin' | 'simon' | 'rogier' | 'unknown';
 type Message = {
   author: Author;
@@ -112,98 +111,8 @@ const program = (filenames: string[]): void => {
   );
   console.info(`- Relevant information has been written to ${outputFilename}.txt`);
 
-  // Other ideas from Lisa:
-  // - Add most common collaborations for all different permutations of people (for example: how often did simon+pablo+robin post together?)
-  // - Which day of the week is most popular?
-  // - Which day/month is most popular?
-
-  // Run analytics
-  console.info('\nRun analytics:');
-  // A report is generated for each author. Additionally, a report is generated for the whole group of authors.
-  type Amount = { exact: number, close: number };
-  type Streaks = { [streakLength: string]: number };
-  type Report = {
-    /** The lifetime amount of 11:11s posted. */
-    lifetime: Amount;
-    /** The yearly amount of 11:11s posted. */
-    yearlies: { [year: string]: Amount };
-    /** The year-monthly amount of 11:11s posted. */
-    yearMonthlies: { [yearMonth: string]: Amount };
-    /** The 'exact' amount 11:11s posted per the total amount of people posted that day. */
-    collaborations: { [numberOnDay: string]: number };
-    /** The 'exact' amount of times a daily streak of a certain length was reached of posting an 11:11s posted. */
-    positiveStreaks: Streaks;
-    /** The 'exact' amount of times a daily streak of a certain length was reached of not posting any 11:11 post */
-    negativeStreaks: Streaks;
-  };
-  const generateReportFor = (author: Author): Report => {
-    console.info('- Generating report for', author);
-    const authorDays = days.filter(date => date.authors.get(author) !== undefined);
-    const getAmount = (days: Day[]): Amount => ({
-      exact: days.filter(date => date.authors.get(author)).length,
-      close: days.filter(date => !date.authors.get(author)).length
-    });
-    const groupBy = <T, U>(items: T[], toGroupName: (item: T) => string, mapper: (item: T[]) => U): { [groupName: string]: U } => {
-      const result: { [groupName: string]: T[] } = {};
-      items.forEach(item => {
-        const groupName = toGroupName(item);
-        if (result[groupName] === undefined) {
-          result[groupName] = [];
-        }
-        result[groupName].push(item);
-      });
-      return Object.fromEntries(Object.entries(result).map(([key, value]) => [key, mapper(value)]));
-    };
-
-    const positiveStreaks: Streaks = {};
-    const negativeStreaks: Streaks = {};
-    let currentPositiveStreak = 0;
-    let currentNegativeStreak = 0;
-    let currentDate = DateTime.fromFormat(days.length > 0 ? days[0].date : '2011-11-11', 'yyyy-MM-dd');
-    const lastDate = DateTime.fromFormat(days.length > 0 ? days[days.length - 1].date : '2011-11-11', 'yyyy-MM-dd');
-    while (currentDate <= lastDate) {
-      currentDate = currentDate.plus({ day: 1 });
-      const hasPosted = analytics[currentDate.toISODate()!]?.get(author) === true;
-      if (hasPosted) {
-        currentPositiveStreak++;
-        if (currentNegativeStreak > 0) {
-          if (negativeStreaks[currentNegativeStreak] === undefined) {
-            negativeStreaks[currentNegativeStreak] = 0;
-          }
-          negativeStreaks[currentNegativeStreak] += 1;
-          currentNegativeStreak = 0;
-        }
-      } else {
-        currentNegativeStreak++;
-        if (currentPositiveStreak > 0) {
-          if (positiveStreaks[currentPositiveStreak] === undefined) {
-            positiveStreaks[currentPositiveStreak] = 0;
-          }
-          positiveStreaks[currentPositiveStreak] += 1;
-          currentPositiveStreak = 0;
-        }
-      }
-    }
-    return {
-      lifetime: getAmount(authorDays),
-      yearlies: groupBy(authorDays, (item) => item.date.substring(0, 4), getAmount),
-      yearMonthlies: groupBy(authorDays, (item) => item.date.substring(0, 7), getAmount),
-      collaborations: groupBy(authorDays, (item) => item.authors.size.toString(10), (item) => item.length),
-      positiveStreaks,
-      negativeStreaks,
-    }
-  };
-  const reports: { [subsetName: string]: Report } = {};
-  // TODO: also generate report for all authors
-  authors.forEach(author => reports[author] = generateReportFor(author));
-  fs.writeFileSync(
-    `${outputFilename}.json`,
-    JSON.stringify(reports, undefined, 2) + '\n',
-  );
-
-  // Copy files to latest files
+  // The daily export is the single source for the web app's analysis.
   fs.copyFileSync(`${outputFilename}.txt`, 'output/latest.txt');
-  fs.copyFileSync(`${outputFilename}.json`, 'output/latest.json');
 }
 
 program(fs.readdirSync(BASE_DATA_PATH));

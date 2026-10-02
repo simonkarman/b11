@@ -4,9 +4,9 @@ echo ""
 echo "--- Run at $(date) ---"
 source "$HOME/.bash_profile"
 
-# Run the auto-fetcher and analyze scripts
+# Fetch messages, then extract the daily 11:11 records.
 npm --prefix auto-fetcher start
-npm run analyze
+npm run extract
 
 # Function to send a notification
 send_notification() {
@@ -33,7 +33,7 @@ fi
 
 # Push changes to GitHub
 git reset .
-git add output/latest.txt output/latest.json
+git add output/latest.txt
 git commit -m "Auto run at $(date "+%Y-%m-%d")"
 git push origin main
 

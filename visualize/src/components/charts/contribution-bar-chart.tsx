@@ -1,37 +1,26 @@
 import { capitalize, Card } from '@/components/card';
-import { colors, Day, Person } from '@/components/utils/data-downloader';
-import { granularities, Granularity, granularityToDateTimeUnit, granularityToFormat, useSelectedData } from '@/components/utils/data-selector';
+import { groupContributions } from '@/analysis/days';
+import { granularities, granularityToFormat } from '@/analysis/granularity';
+import { colors } from '@/data/days';
+import { useSelectedData } from '@/components/utils/data-selector';
 import { DateTime } from 'luxon';
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-
-function groupContributions(days: Day[], granularity: Granularity) {
-  const groups: Record<string, Record<Person, number>> = {};
-  days.forEach(day => {
-    const groupStartDate = DateTime.fromISO(day.date).startOf(granularityToDateTimeUnit(granularity)).toISODate();
-    if (groupStartDate === null) {
-      return;
-    }
-    const group = groups[groupStartDate] || {};
-    day.people.forEach(name => {
-      group[name] = (group[name] || 0) + 1;
-    });
-    groups[groupStartDate] = group;
-  });
-  return Object.entries(groups).map(([group, people]) => ({ group: DateTime.fromISO(group).toMillis()!, ...people }));
-}
+import { useMemo } from 'react';
 
 export const ContributionBarChart = () => {
   const { days, granularity: _granularity, people } = useSelectedData();
 
   // Find the best granularity to display the data
   // Start at the chosen granularity and keep choosing a less granular one as long as there are more than 10 bars
-  let granularityIndex = (_granularity === undefined ? granularities.length - 2 : granularities.indexOf(_granularity)) + 1;
-  let data: unknown[];
-  do {
-    granularityIndex -= 1;
-    data = groupContributions(days, granularities[granularityIndex]);
-  } while (data.length > (_granularity === undefined ? 10 : 15) && granularityIndex > 0);
-  const granularity = granularities[granularityIndex];
+  const { data, granularity } = useMemo(() => {
+    let granularityIndex = (_granularity === undefined ? granularities.length - 2 : granularities.indexOf(_granularity)) + 1;
+    let data;
+    do {
+      granularityIndex -= 1;
+      data = groupContributions(days, granularities[granularityIndex]);
+    } while (data.length > (_granularity === undefined ? 10 : 15) && granularityIndex > 0);
+    return { data, granularity: granularities[granularityIndex] };
+  }, [days, _granularity]);
 
   const labelFormatter = (v: number) => DateTime.fromMillis(v).toFormat(granularityToFormat(granularity))!;
   return <Card title="Contribution" description={`${capitalize(granularity)} contribution per person.`} canMagnify restrictWidth>

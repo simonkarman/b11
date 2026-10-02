@@ -5,9 +5,9 @@ Analyze and view [B11](https://svsticky.nl/nl/besturen/11) posts on 11:11.
 [![Netlify Status](https://api.netlify.com/api/v1/badges/7ebdcebf-ebd5-4540-8138-ddcde2c649b0/deploy-status)](https://app.netlify.com/sites/b11-11/deploys)
 
 ## Getting started
-If you would like to analyze the B11 posts on 11:11, you'll have to follow three steps. First add the data, secondly run the analysis, and lastly visualize the results.
+To view B11 posts at 11:11, provide the message exports, extract the daily records, and open the dashboard. The dashboard calculates its analytics from the daily records when you change the filters.
 
-> Note: You can skip step 1 and 2 if you want to use the latest data. The latest data is already included in this repository.
+> You can skip the first two steps if you want to use the latest data included in this repository.
 
 ### 1. Add data
 Create a `data/` directory in the root of this repository and add the CSV file and txt file exports from WhatsApp to this directory.
@@ -15,17 +15,17 @@ Create a `data/` directory in the root of this repository and add the CSV file a
 - Expected .csv header: `sender_jid_row_id;timestamp;received_timestamp;receipt_server_timestamp;text_data`
 - Expected .nl.txt format: `18-09-2020 09:55 - Simon Karman: Hoe gaat het?`
 
-### 2. Analyze
+### 2. Extract
 You can run this program using npm with the following commands.
 ```bash
 npm install
-npm run analyze
+npm run extract
 ```
 
-This will create a `output/` directory. The `latest.json` and `latest.txt` will contain the output of the latest analysis.
+This creates `output/latest.txt`, the single source of truth for the dashboard. Each line contains a date and the people who posted. A `~` before a name means the post was close to 11:11, but not exact. The script also writes a timestamped text snapshot in `output/`.
 
 ### 3. Visualize
-The `visualize/` directory contains a React app that visualizes the data using [recharts](https://recharts.org). This app can be found running on [b11-11.netlify.app](https://b11-11.netlify.app/).
+The `visualize/` directory contains a React app that reads `latest.txt`, calculates statistics for the selected date range and people, and visualizes the results using [recharts](https://recharts.org). The app can be found at [b11-11.netlify.app](https://b11-11.netlify.app/).
 
 If you would like to run the visualization locally. You can run the commands.
 ```bash
@@ -38,7 +38,7 @@ You can now view the visualization on [localhost:3000](http://localhost:3000).
 More information can be found in the [README.md](visualize/README.md) in the `visualize/` directory.
 
 ## Auto run
-To automatically fetch and run the analysis you can use the `./auto.sh` script. This script will fetch the latest data, run the analysis, and push the changes to the repository.
+To fetch new messages and update the extracted daily records, you can use `./auto.sh`. It fetches the latest data, runs extraction, and pushes changes to `output/latest.txt`.
 
 ```bash
 # (optional)
